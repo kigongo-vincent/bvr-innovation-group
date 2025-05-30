@@ -1,0 +1,360 @@
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.active {
+  display: block;
+  opacity: 1;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.modal-container {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  margin: 2rem auto;
+  background: var(--paper);
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  max-height: 95vh;
+  overflow-y: auto;
+}
+
+.modal.active .modal-container {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--dark);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1;
+  transition: transform 0.2s ease;
+}
+
+.modal-close:hover {
+  transform: rotate(90deg);
+}
+
+.modal-content {
+  padding: 2rem;
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.modal-header h2 {
+  font-size: 2rem;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.modal-header p {
+  color: var(--text-gray);
+  font-size: 1.1rem;
+}
+
+/* Contact Form Styles */
+.contact-form {
+  display: grid;
+  gap: 7px; /* Reduced from 10px to 7px */
+}
+
+/* Adjust spacing within the budget/description wrapper */
+#start-project-form > div > .form-group {
+    margin-bottom: 0; /* Remove space between these specific form groups */
+    margin-top: 0; /* Ensure no top space either */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Keep gap for label and input/select/textarea */
+  margin-bottom: 7px; /* Reduced from 10px to 7px */
+}
+
+.form-group label {
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(62, 184, 186, 0.1);
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--primary);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.submit-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.submit-button i {
+  transition: transform 0.2s ease;
+}
+
+.submit-button:hover i {
+  transform: translateX(4px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .modal-container {
+    width: 95%;
+    margin: 1rem auto;
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+  }
+
+  .modal-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .modal-header p {
+    font-size: 1rem;
+  }
+
+  .submit-button {
+    width: 100%;
+  }
+}
+
+/* Modal Message Styles */
+.modal-message {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 1100;
+}
+
+.modal-message.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal-message.success {
+  background: #10b981;
+  color: white;
+}
+
+.modal-message.error {
+  background: #ef4444;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .modal-message {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    text-align: center;
+  }
+}
+
+/* Form Animation Styles */
+.modal.active .modal-header {
+  animation: slideDown 0.5s ease forwards;
+}
+
+.modal.active .form-group {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.modal.active .form-group:nth-child(1) {
+  animation: fadeInUp 0.5s ease 0.1s forwards;
+}
+.modal.active .form-group:nth-child(2) {
+  animation: fadeInUp 0.5s ease 0.2s forwards;
+}
+.modal.active .form-group:nth-child(3) {
+  animation: fadeInUp 0.5s ease 0.3s forwards;
+}
+.modal.active .form-group:nth-child(4) {
+  animation: fadeInUp 0.5s ease 0.4s forwards;
+}
+.modal.active .form-group:nth-child(5) {
+  animation: fadeInUp 0.5s ease 0.5s forwards;
+}
+.modal.active .submit-button {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease 0.6s forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add transition for form elements when modal closes */
+.modal:not(.active) .modal-header,
+.modal:not(.active) .form-group,
+.modal:not(.active) .submit-button {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Add hover animations for form elements */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  transform: translateY(0);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Add animation for the submit button icon */
+.submit-button i {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.submit-button:hover i {
+  transform: translateX(4px);
+}
+
+.submit-button:active i {
+  transform: translateX(8px);
+}
+
+/* Add loading animation for the submit button */
+.submit-button.loading i {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Specific adjustment for the last form group before the submit button */
+#start-project-form .form-group:last-of-type {
+  margin-bottom: 1rem; /* Reduce space before the submit button */
+}
+
+/* Attempt to remove grid gap specifically between budget and description */
+#start-project-form {
+  display: grid;
+  /* Keep default gap for other items */
+  grid-row-gap: 1.5rem;
+}
+
+/* Remove the following specific nth-child rules that are no longer needed */
+/*
+#start-project-form .form-group:nth-child(5) {
+  margin-bottom: 0 !important; /* Ensure no bottom margin from the element itself */
+}
+
+#start-project-form > *:nth-child(5) {
+  grid-row-end: span 1;
+  margin-bottom: 0 !important;
+}
+
+#start-project-form > *:nth-child(6) {
+  grid-row-start: span 1;
+  margin-top: 0 !important;
+}
+
+#start-project-form .form-group:nth-child(6) {
+  margin-top: 0 !important;
+}
+*/

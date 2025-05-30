@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        @import
+        url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap");
+        text {
+        font-family: 'Poppins', sans-serif;
+        }
+    </style>
+    <!-- Background -->
+    <rect width="800" height="400" fill="#3EB8BA" fill-opacity="0.05" />
+
+    <!-- Left Side - Others -->
+    <g class="others" transform="translate(200, 200)">
+        <!-- Multiple Small Circles -->
+        <circle cx="-100" cy="-50" r="20" fill="#3EB8BA" fill-opacity="0.2" />
+        <circle cx="-50" cy="-80" r="20" fill="#3EB8BA" fill-opacity="0.2" />
+        <circle cx="0" cy="-50" r="20" fill="#3EB8BA" fill-opacity="0.2" />
+        <circle cx="-75" cy="0" r="20" fill="#3EB8BA" fill-opacity="0.2" />
+        <circle cx="-25" cy="0" r="20" fill="#3EB8BA" fill-opacity="0.2" />
+
+        <!-- Labels -->
+        <text x="-100" y="-50" text-anchor="middle" fill="#3EB8BA" font-size="12">Build</text>
+        <text x="-50" y="-80" text-anchor="middle" fill="#3EB8BA" font-size="12">Co-create</text>
+        <text x="0" y="-50" text-anchor="middle" fill="#3EB8BA" font-size="12">Pilot</text>
+        <text x="-75" y="0" text-anchor="middle" fill="#3EB8BA" font-size="12">Fund</text>
+    </g>
+
+    <!-- Right Side - We -->
+    <g class="we" transform="translate(600, 200)">
+        <!-- Single Large Circle -->
+        <circle cx="0" cy="0" r="60" fill="#3EB8BA" fill-opacity="0.3" />
+        <circle cx="0" cy="0" r="50" fill="#3EB8BA" />
+
+        <!-- Inner Elements -->
+        <g class="inner-elements" fill="white">
+            <path d="M-20 -20 L20 -20 L0 20 Z" transform="rotate(45)" />
+            <circle cx="0" cy="0" r="10" />
+        </g>
+
+        <!-- Label -->
+        <text x="0" y="100" text-anchor="middle" fill="#3EB8BA" font-size="16" font-weight="bold">
+            Commercialise</text>
+    </g>
+
+    <!-- Connecting Arrow -->
+    <g class="arrow" transform="translate(400, 200)">
+        <path d="M-50 0 L50 0" stroke="#3EB8BA" stroke-width="3" marker-end="url(#arrowhead)" />
+        <circle cx="0" cy="0" r="5" fill="#3EB8BA" />
+    </g>
+
+    <!-- Arrow Marker Definition -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#3EB8BA" />
+        </marker>
+    </defs>
+
+    <!-- Decorative Elements -->
+    <g class="decorations" fill="#3EB8BA" fill-opacity="0.1">
+        <circle cx="100" cy="100" r="15" />
+        <circle cx="700" cy="300" r="20" />
+        <circle cx="400" cy="50" r="12" />
+        <circle cx="200" cy="350" r="18" />
+        <circle cx="600" cy="150" r="15" />
+    </g>
+</svg> 

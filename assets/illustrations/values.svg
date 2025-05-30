@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        @import
+        url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap");
+        text {
+        font-family: 'Poppins', sans-serif;
+        }
+    </style>
+    <!-- Background -->
+    <rect width="800" height="400" fill="#3EB8BA" fill-opacity="0.05" />
+
+    <!-- Central Circle -->
+    <circle cx="400" cy="200" r="80" fill="#3EB8BA" fill-opacity="0.2" />
+    <circle cx="400" cy="200" r="70" fill="#3EB8BA" />
+
+    <!-- Value Icons -->
+    <g class="value-icons" transform="translate(400, 200)">
+        <!-- Innovation -->
+        <g class="innovation" transform="translate(-150, -100)">
+            <circle cx="0" cy="0" r="30" fill="#3EB8BA" fill-opacity="0.3" />
+            <path d="M-15 -15 L15 -15 L0 15 Z" fill="white" transform="rotate(45)" />
+            <circle cx="0" cy="0" r="5" fill="white" />
+            <text x="0" y="45" text-anchor="middle" fill="#3EB8BA" font-size="12">Innovation</text>
+        </g>
+
+        <!-- Collaboration -->
+        <g class="collaboration" transform="translate(150, -100)">
+            <circle cx="0" cy="0" r="30" fill="#3EB8BA" fill-opacity="0.3" />
+            <circle cx="-10" cy="0" r="8" fill="white" />
+            <circle cx="10" cy="0" r="8" fill="white" />
+            <path d="M-10 0 L10 0" stroke="white" stroke-width="2" />
+            <text x="0" y="45" text-anchor="middle" fill="#3EB8BA" font-size="12">Collaboration</text>
+        </g>
+
+        <!-- Impact -->
+        <g class="impact" transform="translate(-150, 100)">
+            <circle cx="0" cy="0" r="30" fill="#3EB8BA" fill-opacity="0.3" />
+            <path d="M-15 0 L15 0 M0 -15 L0 15" stroke="white" stroke-width="2" />
+            <circle cx="0" cy="0" r="10" fill="white" />
+            <text x="0" y="45" text-anchor="middle" fill="#3EB8BA" font-size="12">Impact</text>
+        </g>
+
+        <!-- Growth -->
+        <g class="growth" transform="translate(150, 100)">
+            <circle cx="0" cy="0" r="30" fill="#3EB8BA" fill-opacity="0.3" />
+            <path d="M-10 10 L0 -10 L10 10" stroke="white" stroke-width="2" fill="none" />
+            <text x="0" y="45" text-anchor="middle" fill="#3EB8BA" font-size="12">Growth</text>
+        </g>
+    </g>
+
+    <!-- Connecting Lines -->
+    <g class="connections" stroke="#3EB8BA" stroke-width="2" stroke-dasharray="4 4">
+        <path d="M250 100 L400 200" />
+        <path d="M550 100 L400 200" />
+        <path d="M250 300 L400 200" />
+        <path d="M550 300 L400 200" />
+    </g>
+
+    <!-- Decorative Elements -->
+    <g class="decorations" fill="#3EB8BA" fill-opacity="0.1">
+        <circle cx="100" cy="100" r="15" />
+        <circle cx="700" cy="300" r="20" />
+        <circle cx="400" cy="50" r="12" />
+        <circle cx="200" cy="350" r="18" />
+        <circle cx="600" cy="150" r="15" />
+    </g>
+
+    <!-- Central Text -->
+    <text x="400" y="200" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Our
+        Values</text>
+</svg> 

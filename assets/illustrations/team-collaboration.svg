@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background Elements -->
+    <circle cx="400" cy="300" r="250" fill="#3EB8BA" fill-opacity="0.1" />
+    <circle cx="400" cy="300" r="200" fill="#3EB8BA" fill-opacity="0.15" />
+
+    <!-- Abstract Connection Lines -->
+    <path d="M200 300 Q400 200 600 300" stroke="#3EB8BA" stroke-width="2" stroke-dasharray="4 4" />
+    <path d="M200 400 Q400 500 600 400" stroke="#3EB8BA" stroke-width="2" stroke-dasharray="4 4" />
+
+    <!-- People Silhouettes -->
+    <g transform="translate(250, 200)">
+        <!-- Person 1 -->
+        <circle cx="0" cy="0" r="30" fill="#3EB8BA" />
+        <path d="M-20 30 Q0 60 20 30" stroke="#3EB8BA" stroke-width="4" fill="none" />
+        <path d="M-15 30 L-25 50" stroke="#3EB8BA" stroke-width="4" fill="none" />
+        <path d="M15 30 L25 50" stroke="#3EB8BA" stroke-width="4" fill="none" />
+    </g>
+
+    <g transform="translate(400, 150)">
+        <!-- Person 2 -->
+        <circle cx="0" cy="0" r="30" fill="#3EB8BA" />
+        <path d="M-20 30 Q0 60 20 30" stroke="#3EB8BA" stroke-width="4" fill="none" />
+        <path d="M-15 30 L-25 50" stroke="#3EB8BA" stroke-width="4" fill="none" />
+        <path d="M15 30 L25 50" stroke="#3EB8BA" stroke-width="4" fill="none" />
+    </g>
+
+    <g transform="translate(550, 200)">
+        <!-- Person 3 -->
+        <circle cx="0" cy="0" r="30" fill="#3EB8BA" />
+        <path d="M-20 30 Q0 60 20 30" stroke="#3EB8BA" stroke-width="4" fill="none" />
+        <path d="M-15 30 L-25 50" stroke="#3EB8BA" stroke-width="4" fill="none" />
+        <path d="M15 30 L25 50" stroke="#3EB8BA" stroke-width="4" fill="none" />
+    </g>
+
+    <!-- Connection Dots -->
+    <circle cx="325" cy="175" r="5" fill="#3EB8BA" />
+    <circle cx="475" cy="175" r="5" fill="#3EB8BA" />
+
+    <!-- Abstract Shapes -->
+    <path d="M300 400 Q400 350 500 400" stroke="#3EB8BA" stroke-width="3" fill="none" />
+    <circle cx="400" cy="380" r="10" fill="#3EB8BA" />
+</svg> 

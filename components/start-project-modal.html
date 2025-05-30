@@ -1,0 +1,103 @@
+<!-- Start Project Modal Component -->
+<div id="start-project-modal" class="modal">
+  <div class="modal-overlay"></div>
+  <div class="modal-container">
+    <button class="modal-close" aria-label="Close modal">
+      <i class="fas fa-times"></i>
+    </button>
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Start a Project</h2>
+        <p>
+          Tell us about your project and let's create something extraordinary
+          together.
+        </p>
+      </div>
+
+      <form id="start-project-form" class="contact-form">
+        <div class="form-group">
+          <label for="project-name">Project Name</label>
+          <input
+            type="text"
+            id="project-name"
+            name="project-name"
+            required
+            placeholder="What's your project called?"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="project-email">Email</label>
+          <input
+            type="email"
+            id="project-email"
+            name="project-email"
+            required
+            placeholder="Your email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="project-company">Company</label>
+          <input
+            type="text"
+            id="project-company"
+            name="project-company"
+            placeholder="Your company (optional)"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="project-type">Project Type</label>
+          <select id="project-type" name="project-type" required>
+            <option value="">Select project type</option>
+            <option value="digital-product">Digital Product Development</option>
+            <option value="business-transformation">
+              Business Transformation
+            </option>
+            <option value="market-entry">Market Entry Strategy</option>
+            <option value="innovation-program">Innovation Program</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <!-- Container for Budget Range and Project Description to remove space between them -->
+        <div>
+          <div class="form-group">
+            <label for="project-budget">Budget Range</label>
+            <div class="budget-range-inputs">
+              <input
+                type="number"
+                id="project-budget-min"
+                name="project-budget-min"
+                placeholder="Minimum Budget"
+                min="0"
+              />
+              <span>-</span>
+              <input
+                type="number"
+                id="project-budget-max"
+                name="project-budget-max"
+                placeholder="Maximum Budget"
+                min="0"
+              />
+            </div>
+          </div>
+<br>
+          <div class="form-group">
+            <label for="project-description">Project Description</label>
+            <textarea
+              id="project-description"
+              name="project-description"
+              required
+              placeholder="Tell us about your project goals, challenges, and timeline"
+            ></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-button">Submit Project</button>
+      </form>
+    </div>
+  </div>
+</div>

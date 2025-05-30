@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BVR Innovation Group</title>
+    <link href="./assets/css/index.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="./assets/js/slider.js" defer></script>
+    <script src="./assets/js/components.js" defer></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link rel="stylesheet" href="assets/css/components/modal.css" />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        AOS.init({
+          duration: 800,
+          once: true,
+          offset: 100,
+        });
+      });
+    </script>
+    <script src="./assets/js/base.js" defer></script>
+  </head>
+  <body>
+    <!-- navbar container -->
+    <div id="navbar-container"></div>
+
+    <!-- hero section  -->
+    <section class="hero">
+      <div class="slider-container" data-aos="fade">
+        <img
+          src="assets/images/slider/1.jpg"
+          alt="Slider 1"
+          class="slider-image active"
+        />
+        <img
+          src="assets/images/slider/2.jpg"
+          alt="Slider 2"
+          class="slider-image"
+        />
+        <img
+          src="assets/images/slider/3.jpg"
+          alt="Slider 3"
+          class="slider-image"
+        />
+        <img
+          src="assets/images/slider/4.jpg"
+          alt="Slider 4"
+          class="slider-image"
+        />
+        <img
+          src="assets/images/slider/5.jpg"
+          alt="Slider 5"
+          class="slider-image"
+        />
+        <img
+          src="assets/images/slider/6.jpg"
+          alt="Slider 6"
+          class="slider-image"
+        />
+      </div>
+      <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
+        <h1>Bend the Future</h1>
+        <p>
+          We commercialise innovation — turning ideas into market-ready
+          ventures, <br />
+          platforms, and growth programs.
+        </p>
+
+        <div class="actions">
+          <button onclick="navigate('/units')">Explore our units</button>
+          <button data-modal="start-project">Start a project</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- intro  -->
+    <section class="intro">
+      <div class="intro-content">
+        <div class="intro-illustration" data-aos="fade-right">
+          <img
+            src="assets/icons/who-we-are.svg"
+            alt="Who We Are Illustration"
+          />
+        </div>
+        <div class="intro-text" data-aos="fade-left">
+          <h1>Who We Are</h1>
+          <p>
+            While others focus on building prototypes, writing research papers,
+            or funding early experiments, we focus on execution — helping
+            businesses, partners, and ecosystems move beyond good ideas to real
+            growth, adoption, and scale. Whether it's a digital product, a
+            supply chain challenge, or a growth opportunity in a shifting market
+          </p>
+          <i>"we turn insight into action and action into outcomes."</i>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section class="units">
+      <div class="units-content">
+        <h2 data-aos="fade-up">What We Do</h2>
+        <div class="units-grid">
+          <div class="unit-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="unit-icon">
+              <svg width="80" height="80" viewBox="0 0 100 100">
+                <use href="assets/icons/units.svg#project-studio" />
+              </svg>
+            </div>
+            <h3>BVR Project Studio</h3>
+            <p>
+              We design and deliver business and development projects that
+              create measurable impact.
+            </p>
+          </div>
+
+          <div class="unit-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="unit-icon">
+              <svg width="80" height="80" viewBox="0 0 100 100">
+                <use href="assets/icons/units.svg#launch-lab" />
+              </svg>
+            </div>
+            <h3>BVR Launch Lab</h3>
+            <p>
+              We build and launch digital platforms that generate revenue and
+              unlock new value.
+            </p>
+          </div>
+
+          <div class="unit-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="unit-icon">
+              <svg width="80" height="80" viewBox="0 0 100 100">
+                <use href="assets/icons/units.svg#intelligence" />
+              </svg>
+            </div>
+            <h3>BVR Intelligence</h3>
+            <p>
+              We gather, analyze, and translate market data into decision-ready
+              insights.
+            </p>
+          </div>
+
+          <div class="unit-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="unit-icon">
+              <svg width="80" height="80" viewBox="0 0 100 100">
+                <use href="assets/icons/units.svg#accelerator" />
+              </svg>
+            </div>
+            <h3>BVR Accelerator Studio</h3>
+            <p>
+              We design challenge-driven programs that help businesses grow
+              faster and better.
+            </p>
+          </div>
+
+          <div class="unit-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="unit-icon">
+              <svg width="80" height="80" viewBox="0 0 100 100">
+                <use href="assets/icons/units.svg#horizon" />
+              </svg>
+            </div>
+            <h3>BVR Horizon</h3>
+            <p>
+              We invest in, acquire, or co-build ventures that align with BVR's
+              vision for the future.
+            </p>
+          </div>
+        </div>
+        <div class="units-cta">
+          <button class="cta-button" onclick="navigate('/units')">Explore the Units</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy">
+      <div class="philosophy-content">
+        <div class="philosophy-shape" data-aos="zoom-in" data-aos-delay="100">
+          <img
+            src="assets/icons/philosophy-shape.svg"
+            alt="Abstract shape representing movement and innovation"
+          />
+        </div>
+        <div class="philosophy-text" data-aos="fade-left" data-aos-delay="200">
+          <h2>We are the team you call when it's time to move.</h2>
+          <div class="philosophy-paragraphs">
+            <p>We don't exist to talk about innovation.</p>
+            <p>
+              We exist to deliver it — through growth projects, digital
+              platforms, accelerators, and ventures that meet the market where
+              it is.
+            </p>
+            <p>
+              Everything we build is rooted in practicality, momentum, and
+              long-term value.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beliefs Section -->
+    <section class="beliefs text-light">
+      <div class="beliefs-content">
+        <h2 data-aos="fade-up">Our Beliefs</h2>
+        <div class="beliefs-grid">
+          <div class="belief-card" data-aos="fade-up" data-aos-delay="100">
+            <div
+              class="belief-image"
+              style="background-image: url('assets/images/beliefs/adapt.jpg')"
+            >
+              <div class="belief-overlay"></div>
+            </div>
+            <div class="belief-content">
+              <h3>Adapt to Market Changes</h3>
+              <p>We respond with strategy, not panic.</p>
+            </div>
+          </div>
+
+          <div class="belief-card" data-aos="fade-up" data-aos-delay="200">
+            <div
+              class="belief-image"
+              style="
+                background-image: url('assets/images/beliefs/evolution.jpg');
+              "
+            >
+              <div class="belief-overlay"></div>
+            </div>
+            <div class="belief-content">
+              <h3>Continuous Evolution</h3>
+              <p>
+                We never stop iterating — because markets <br />
+                don't stop changing.
+              </p>
+            </div>
+          </div>
+
+          <div class="belief-card" data-aos="fade-up" data-aos-delay="300">
+            <div
+              class="belief-image"
+              style="background-image: url('assets/images/beliefs/balance.jpg')"
+            >
+              <div class="belief-overlay"></div>
+            </div>
+            <div class="belief-content">
+              <h3>Balance Risk with Optimism</h3>
+              <p>
+                We take calculated steps, grounded in <br />
+                reality and possibility.
+              </p>
+            </div>
+          </div>
+
+          <div class="belief-card" data-aos="fade-up" data-aos-delay="400">
+            <div
+              class="belief-image"
+              style="
+                background-image: url('assets/images/beliefs/opportunity.jpg');
+              "
+            >
+              <div class="belief-overlay"></div>
+            </div>
+            <div class="belief-content">
+              <h3>Find Opportunity in Chaos</h3>
+              <p>
+                Innovation thrives where systems are <br />
+                stretched. We step in there.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="cta">
+      <div class="cta-overlay"></div>
+      <div class="cta-content" data-aos="zoom-in">
+        <h2 class="light">
+          Have an idea, a challenge, or a market opportunity?
+        </h2>
+        <p class="cta-subtitle light">Let's build what's next — together.</p>
+        <div class="cta-actions">
+          <button class="cta-button primary" data-modal="start-project">
+            Work With Us
+          </button>
+          <a href="#" class="cta-button secondary" data-modal="contact"
+            >Contact Our Team</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- footer container -->
+    <div id="footer-container"></div>
+
+    <!-- Modal Components -->
+    <div id="modal-container"></div>
+
+    <script src="assets/js/modal.js"></script>
+  </body>
+</html>
