@@ -14,47 +14,37 @@
     <path d="M100 200 H700" stroke="#3EB8BA" stroke-width="3" stroke-dasharray="8 8" />
 
     <!-- Process Steps -->
-    <g class="step-1" transform="translate(150, 200)">
-        <circle cx="0" cy="0" r="40" fill="#3EB8BA" fill-opacity="0.2" />
-        <circle cx="0" cy="0" r="30" fill="#3EB8BA" />
-        <text x="0" y="5" text-anchor="middle" fill="white" font-size="20" font-weight="bold">1</text>
-        <text x="0" y="80" text-anchor="middle" fill="#3EB8BA" font-size="14">Understand</text>
-    </g>
+    <g transform="translate(400, 200)">
+        <!-- Step 1 -->
+        <circle cx="-240" cy="0" r="40" fill="#3EB8BA" />
+        <text x="-240" y="0" text-anchor="middle" dy=".3em" fill="white" font-size="20"
+            font-weight="bold">1</text>
 
-    <g class="step-2" transform="translate(300, 200)">
-        <circle cx="0" cy="0" r="40" fill="#3EB8BA" fill-opacity="0.2" />
-        <circle cx="0" cy="0" r="30" fill="#3EB8BA" />
-        <text x="0" y="5" text-anchor="middle" fill="white" font-size="20" font-weight="bold">2</text>
-        <text x="0" y="80" text-anchor="middle" fill="#3EB8BA" font-size="14">Strategise</text>
-    </g>
+        <!-- Step 2 -->
+        <circle cx="-80" cy="0" r="40" fill="#3EB8BA" />
+        <text x="-80" y="0" text-anchor="middle" dy=".3em" fill="white" font-size="20"
+            font-weight="bold">2</text>
 
-    <g class="step-3" transform="translate(450, 200)">
-        <circle cx="0" cy="0" r="40" fill="#3EB8BA" fill-opacity="0.2" />
-        <circle cx="0" cy="0" r="30" fill="#3EB8BA" />
-        <text x="0" y="5" text-anchor="middle" fill="white" font-size="20" font-weight="bold">3</text>
-        <text x="0" y="80" text-anchor="middle" fill="#3EB8BA" font-size="14">Build</text>
-    </g>
+        <!-- Step 3 -->
+        <circle cx="80" cy="0" r="40" fill="#3EB8BA" />
+        <text x="80" y="0" text-anchor="middle" dy=".3em" fill="white" font-size="20"
+            font-weight="bold">3</text>
 
-    <g class="step-4" transform="translate(600, 200)">
-        <circle cx="0" cy="0" r="40" fill="#3EB8BA" fill-opacity="0.2" />
-        <circle cx="0" cy="0" r="30" fill="#3EB8BA" />
-        <text x="0" y="5" text-anchor="middle" fill="white" font-size="20" font-weight="bold">4</text>
-        <text x="0" y="80" text-anchor="middle" fill="#3EB8BA" font-size="14">Scale</text>
-    </g>
+        <!-- Step 4 -->
+        <circle cx="240" cy="0" r="40" fill="#3EB8BA" />
+        <text x="240" y="0" text-anchor="middle" dy=".3em" fill="white" font-size="20"
+            font-weight="bold">4</text>
 
-    <!-- Connecting Arrows -->
-    <g class="arrows" stroke="#3EB8BA" stroke-width="2">
-        <path d="M190 200 L210 200" marker-end="url(#arrowhead)" />
-        <path d="M340 200 L360 200" marker-end="url(#arrowhead)" />
-        <path d="M490 200 L510 200" marker-end="url(#arrowhead)" />
-    </g>
+        <!-- Connecting Lines -->
+        <line x1="-200" y1="0" x2="-120" y2="0" stroke="#3EB8BA" stroke-width="4" />
+        <line x1="-40" y1="0" x2="40" y2="0" stroke="#3EB8BA" stroke-width="4" />
+        <line x1="120" y1="0" x2="200" y2="0" stroke="#3EB8BA" stroke-width="4" />
 
-    <!-- Arrow Marker Definition -->
-    <defs>
-        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-            <polygon points="0 0, 10 3.5, 0 7" fill="#3EB8BA" />
-        </marker>
-    </defs>
+        <!-- Arrow Heads -->
+        <path d="M-120,0 L-130,-10 L-130,10 Z" fill="#3EB8BA" />
+        <path d="M40,0 L30,-10 L30,10 Z" fill="#3EB8BA" />
+        <path d="M200,0 L190,-10 L190,10 Z" fill="#3EB8BA" />
+    </g>
 
     <!-- Decorative Elements -->
     <g class="decorations" fill="#3EB8BA" fill-opacity="0.1">

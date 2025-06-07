@@ -15,10 +15,10 @@ async function loadComponent(elementId, componentPath) {
 // Load components when the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   // Load navbar
-  loadComponent("navbar-container", "/components/navbar.html");
+  loadComponent("navbar-container", "components/navbar.html");
 
   // Load footer
-  loadComponent("footer-container", "/components/footer.html").then(() => {
+  loadComponent("footer-container", "components/footer.html").then(() => {
     // Update the year after footer is loaded
     const yearElement = document.querySelector("#year");
     if (yearElement) {
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Load contact modal
-  fetch("/components/contact-modal.html")
+  fetch("components/contact-modal.html")
     .then((response) => response.text())
     .then((html) => {
       document.body.insertAdjacentHTML("beforeend", html);
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch((error) => console.error("Error loading contact modal:", error));
 
   // Load start project modal
-  fetch("/components/start-project-modal.html")
+  fetch("components/start-project-modal.html")
     .then((response) => response.text())
     .then((html) => {
       document.body.insertAdjacentHTML("beforeend", html);

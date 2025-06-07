@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accelerator - BVR Innovation Group</title>
+    <link href="./assets/css/accelerator.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="./assets/js/components.js" defer></script>
+    <script src="./assets/js/accelerator.js" defer></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link rel="stylesheet" href="assets/css/components/modal.css" />
+    <script src="./assets/js/nav.js" defer></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        AOS.init({
+          duration: 800,
+          once: true,
+          offset: 100,
+        });
+      });
+    </script>
+    <script src="./assets/js/base.js" defer></script>
+
+    <style>
+      @media (max-width: 768px) {
+        .hero-image {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- navbar container -->
+    <div id="navbar-container"></div>
+
+    <!-- Error Message Container -->
+    <div id="error-container" class="error-container" style="display: none">
+      <div class="error-content">
+        <i class="fas fa-exclamation-circle"></i>
+        <h2>Oops! Something went wrong</h2>
+        <p>
+          We couldn't load the accelerator program data. Please try again later.
+        </p>
+        <button onclick="window.location.reload()">Retry</button>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <!-- Content will be loaded dynamically -->
+    </section>
+
+    <!-- Program Timeline -->
+    <section class="timeline">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Program Timeline</h2>
+          <p class="subtitle">Key dates for the 2025 March cohort</p>
+        </div>
+        <div class="timeline-grid">
+          <!-- Content will be loaded dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Program Details -->
+    <section class="program-details">
+      <div class="bg-overlay"></div>
+      <div class="container">
+        <div class="quote-box" data-aos="fade-up">
+          <!-- Content will be loaded dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+      <div class="container">
+        <h2>The Team</h2>
+        <div class="team-grid">
+          <!-- Content will be loaded dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+      <div class="container">
+        <h2>Partners</h2>
+        <div class="partners-grid">
+          <!-- Content will be loaded dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- footer container -->
+    <div id="footer-container"></div>
+  </body>
+</html>

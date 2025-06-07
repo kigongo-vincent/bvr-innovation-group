@@ -1,0 +1,175 @@
+[
+  {
+    "id": 1,
+    "logo": "https://hal-assets-prod.s3.amazonaws.com/programs/1b83bb7b-36f1-4723-a504-3c57e031172b.png",
+    "title": "Paris Saint-Germain",
+    "type": "SportTech",
+    "description": "With its PSG Labs program, Paris Saint-Germain supports the most promising startups in shaping the future of sports.",
+    "location": "Paris, France",
+    "programType": "In Person Program",
+    "dates": {
+      "applicationsOpen": "2024-01-01",
+      "finalDeadline": "2024-03-31",
+      "programStart": "2024-06-01",
+      "demoDay": "2024-09-30"
+    },
+    "team": {
+      "managingDirector": "PSG Labs Team",
+      "programManager": "PSG Innovation Team",
+      "partners": [
+        {
+          "name": "PSG Innovation",
+          "role": "Sports Innovation Partner"
+        }
+      ]
+    },
+    "focus": [
+      "Sports Technology",
+      "Fan Engagement",
+      "Performance Analytics",
+      "Digital Innovation"
+    ],
+    "programDetails": {
+      "classSize": "Multiple startups per cohort",
+      "target": "Startups focused on sports technology and innovation"
+    }
+  },
+  {
+    "id": 2,
+    "logo": "https://hal-assets-prod.s3.amazonaws.com/programs/41708462-1316-4642-a30a-e0c735b7aca7.png",
+    "title": "42 incubator",
+    "type": "Early-Stage",
+    "description": "Incubation program dedicated to startups founded or co-founded by 42 alumni.",
+    "location": "Paris, France",
+    "programType": "Hybrid Program",
+    "dates": {
+      "applicationsOpen": "2024-01-01",
+      "finalDeadline": "2024-02-28",
+      "programStart": "2024-04-01",
+      "demoDay": "2024-07-31"
+    },
+    "team": {
+      "managingDirector": "42 Incubator Team",
+      "programManager": "42 Innovation Team",
+      "partners": [
+        {
+          "name": "42 School",
+          "role": "Educational Partner"
+        }
+      ]
+    },
+    "focus": [
+      "Software Development",
+      "Digital Innovation",
+      "Tech Education",
+      "Startup Development"
+    ],
+    "programDetails": {
+      "classSize": "Multiple startups per cohort",
+      "target": "42 alumni founders and co-founders"
+    }
+  },
+  {
+    "id": 3,
+    "logo": "https://hal-assets-prod.s3.amazonaws.com/programs/02c353f7-9aee-451d-84b4-9419731124e1.png",
+    "title": "Entrepreneur First",
+    "type": "Talent Investor",
+    "description": "EF helps the most ambitious individuals find a co-founder, develop an idea, and build a company.",
+    "location": "Global (Multiple Locations)",
+    "programType": "In Person Program",
+    "dates": {
+      "applicationsOpen": "2024-01-01",
+      "finalDeadline": "2024-02-28",
+      "programStart": "2024-04-01",
+      "demoDay": "2024-07-31"
+    },
+    "team": {
+      "managingDirector": "EF Global Team",
+      "programManager": "Local Program Managers",
+      "partners": [
+        {
+          "name": "EF Investment Team",
+          "role": "Investment Partner"
+        }
+      ]
+    },
+    "focus": ["Deep Tech", "Enterprise Software", "Consumer Tech", "AI/ML"],
+    "programDetails": {
+      "classSize": "Multiple founders per cohort",
+      "target": "Ambitious individuals looking to build technology companies"
+    }
+  },
+  {
+    "id": 4,
+    "logo": "https://hal-assets-prod.s3.amazonaws.com/programs/50f8532e-347a-4461-baf6-6387884ec3fc.png",
+    "title": "Télécom Paris - IPP",
+    "type": "Early Stage",
+    "description": "Télécom Paris - IPP startup programs accompanying alumni students.",
+    "location": "Paris, France",
+    "programType": "Hybrid Program",
+    "dates": {
+      "applicationsOpen": "2024-01-01",
+      "finalDeadline": "2024-02-28",
+      "programStart": "2024-04-01",
+      "demoDay": "2024-07-31"
+    },
+    "team": {
+      "managingDirector": "IPP Team",
+      "programManager": "Télécom Paris Innovation Team",
+      "partners": [
+        {
+          "name": "Télécom Paris",
+          "role": "Academic Partner"
+        }
+      ]
+    },
+    "focus": [
+      "Digital Innovation",
+      "Tech Entrepreneurship",
+      "Research Commercialization",
+      "Academic Innovation"
+    ],
+    "programDetails": {
+      "classSize": "Multiple startups per cohort",
+      "target": "Télécom Paris alumni and students"
+    }
+  },
+  {
+    "id": 5,
+    "logo": "https://www.techstars.com/accelerators/abn-amro-future-of-finance",
+    "title": "ABN AMRO + Techstars Future of Finance Accelerator",
+    "type": "FinTech",
+    "description": "This program is for unstoppable founders across Europe focusing on redefining the future of finance - from core fintech to AI, enterprise solutions and beyond.",
+    "location": "Amsterdam, Netherlands",
+    "programType": "In Person Program",
+    "dates": {
+      "applicationsOpen": "2025-04-08",
+      "finalDeadline": "2025-06-11",
+      "programStart": "2025-09-08",
+      "demoDay": "2025-12-04"
+    },
+    "team": {
+      "managingDirector": "Allard Luchsinger",
+      "programManager": "Kristi Kurvits",
+      "partners": [
+        {
+          "name": "Laurens Hamerlinck",
+          "role": "Head of Fintech Venturing at ABN AMRO",
+          "quote": "Developing the future of finance is a collaborative effort. Our program aims to provide a platform for founders to grow, partner up and scale their business."
+        },
+        {
+          "name": "Jolenthe Janssen",
+          "role": "Fintech Venturing at ABN AMRO"
+        }
+      ]
+    },
+    "focus": ["Fintech", "Sustainability", "Digital Assets", "GenAI"],
+    "programDetails": {
+      "classSize": "10 Fintech companies, 22 unstoppable founders",
+      "target": "We are looking for unstoppable founders building companies at the intersections of fintech, sustainability, digital assets, and GenAI, and who have a strong urge to leave a positive impact on this planet",
+      "quote": "We are looking for unstoppable founders building companies at the intersections of fintech, sustainability, digital assets, and GenAI, and who have a strong urge to leave a positive impact on this planet",
+      "quoteAuthor": "Allard Luchsinger",
+      "quoteRole": "Managing Director"
+    }
+  }
+]

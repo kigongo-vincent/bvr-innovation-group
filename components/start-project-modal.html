@@ -27,39 +27,27 @@
           />
         </div>
 
-        <div class="form-group">
-          <label for="project-email">Email</label>
-          <input
-            type="email"
-            id="project-email"
-            name="project-email"
-            required
-            placeholder="Your email"
-          />
-        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="project-email">Email</label>
+            <input
+              type="email"
+              id="project-email"
+              name="project-email"
+              required
+              placeholder="Your email"
+            />
+          </div>
 
-        <div class="form-group">
-          <label for="project-company">Company</label>
-          <input
-            type="text"
-            id="project-company"
-            name="project-company"
-            placeholder="Your company (optional)"
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="project-type">Project Type</label>
-          <select id="project-type" name="project-type" required>
-            <option value="">Select project type</option>
-            <option value="digital-product">Digital Product Development</option>
-            <option value="business-transformation">
-              Business Transformation
-            </option>
-            <option value="market-entry">Market Entry Strategy</option>
-            <option value="innovation-program">Innovation Program</option>
-            <option value="other">Other</option>
-          </select>
+          <div class="form-group">
+            <label for="project-company">Company</label>
+            <input
+              type="text"
+              id="project-company"
+              name="project-company"
+              placeholder="Your company (optional)"
+            />
+          </div>
         </div>
 
         <!-- Container for Budget Range and Project Description to remove space between them -->
@@ -74,7 +62,7 @@
                 placeholder="Minimum Budget"
                 min="0"
               />
-              <span>-</span>
+              <span class="h-separator">-</span>
               <input
                 type="number"
                 id="project-budget-max"
@@ -84,7 +72,7 @@
               />
             </div>
           </div>
-<br>
+          <br />
           <div class="form-group">
             <label for="project-description">Project Description</label>
             <textarea

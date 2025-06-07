@@ -1,11 +1,59 @@
-<!-- navbar  -->
+<!-- Critical CSS inline -->
 <style>
+  /* Critical navbar styles */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    background-color: var(--paper);
+    position: fixed;
+    border-radius: 10px;
+    top: 1%;
+    width: 90%;
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
+    box-shadow: var(--shadow);
+    z-index: 1050;
+    /* animation: navbarSlideDown 0.6s ease-out forwards; */
+    /* opacity: 0; */
+  }
+
+  /* @keyframes navbarSlideDown {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -20px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  } */
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
   .nav-links a {
     position: relative;
     text-decoration: none;
     color: #666;
     transition: color 0.3s ease;
     padding: 0.5rem 0;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--dark);
+  }
+
+  .logo img {
+    height: 24px;
+    width: auto;
   }
 
   .nav-links a:hover {
@@ -48,23 +96,6 @@
     transform-origin: left;
   }
 
-  /* Base navbar styles */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 3rem;
-    background-color: var(--paper);
-    position: fixed;
-    border-radius: 10px;
-    top: 1%;
-    width: 90%;
-    left: 50%;
-    transform: translateX(-50%);
-    box-shadow: var(--shadow);
-    z-index: 1050;
-  }
-
   /* Mobile menu button */
   .mobile-menu-btn {
     display: none;
@@ -90,25 +121,47 @@
   /* Drawer menu */
   .drawer-menu {
     position: fixed;
-    top: auto;
-    bottom: -100%;
+    top: 0;
+    /* bottom: -100%; */
     left: 0;
-    width: 100%;
+    width: 100vw;
     max-width: none;
-    height: auto;
-    max-height: 80vh;
+    height: 100vh;
+    transform: translateY(-100%);
+    /* opacity: 0; */
+    /* max-height: 80vh; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     background-color: var(--paper);
-    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+
+    /* box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+     */
+     /* background: rgba(255, 255, 255, 0.6); */
+     /* backdrop-filter: blur(20px); */
+     
     padding: 2rem 1rem;
     z-index: 1001;
-    transform: translateY(100%);
+    /* transform: translateY(100%); */
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
   }
+  
+
+  .drawer-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    /* background-color: blue; */
+    padding: 0 1rem;
+  }
 
   .drawer-menu.active {
-    transform: translateY(0);
+    transform: translateY(0%);
+    transition: transform 0.3s ease;
   }
 
   .drawer-menu .nav-links {
@@ -164,8 +217,9 @@
   @media (max-width: 768px) {
     nav {
       top: 0;
+      width: 100vw;
+      /* transform: translate(0,0); */
       left: 0;
-      width: 100%;
       transform: none;
       border-radius: 0;
       padding: 1rem;
@@ -197,205 +251,57 @@
   }
 </style>
 
-<script src="/assets/js/base.js" defer></script>
 
-<script>
-  // Immediate logging to verify script execution
-  console.log("Navbar script starting...");
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
+  rel="stylesheet"
+/>
 
-  document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOM Content Loaded - Setting up menu...");
+<!-- Defer non-critical styles -->
+<link
+  rel="stylesheet"
+  href="/assets/css/navbar.css"
+  media="print"
+  onload="this.media='all'"
+/>
 
-    // Immediate check for menu button
-    const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
-    console.log("Initial menu button check:", mobileMenuBtn);
+<!-- Preload critical assets -->
+<link
+  rel="preload"
+  as="image"
+  href="assets/icons/logo.svg"
+  type="image/svg+xml"
+/>
+<link rel="preload" as="script" href="/assets/js/base.js" />
 
-    // Add click handler directly to the button element
-    if (mobileMenuBtn) {
-      mobileMenuBtn.onclick = function (e) {
-        console.log("Direct click handler triggered");
-        e.preventDefault();
-        e.stopPropagation();
-        alert("Menu button clicked!"); // Temporary alert to verify click
-      };
-    }
-
-    const currentPage =
-      window.location.pathname.split("/").pop() || "index.html";
-    const navLinks = {
-      "index.html": ["nav-home", "drawer-nav-home"],
-      "about.html": ["nav-about", "drawer-nav-about"],
-      "units.html": ["nav-units", "drawer-nav-units"],
-    };
-
-    const activeLinkIds = navLinks[currentPage] || [];
-    activeLinkIds.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) {
-        element.classList.add("active");
-      }
-    });
-
-    // Mobile menu functionality
-    const drawerMenu = document.querySelector(".drawer-menu");
-    const drawerOverlay = document.querySelector(".drawer-overlay");
-
-    // Debug state tracking
-    let menuState = {
-      isOpen: false,
-      lastAction: null,
-      timestamp: null,
-    };
-
-    function logMenuState(action) {
-      menuState.isOpen = drawerMenu.classList.contains("active");
-      menuState.lastAction = action;
-      menuState.timestamp = new Date().toISOString();
-      console.log("Menu State:", {
-        isOpen: menuState.isOpen,
-        action: menuState.lastAction,
-        time: menuState.timestamp,
-        menuButton: mobileMenuBtn.classList.contains("active"),
-        drawerMenu: drawerMenu.classList.contains("active"),
-        overlay: drawerOverlay.classList.contains("active"),
-      });
-    }
-
-    if (!mobileMenuBtn || !drawerMenu || !drawerOverlay) {
-      console.error("Required elements not found:", {
-        mobileMenuBtn: !!mobileMenuBtn,
-        drawerMenu: !!drawerMenu,
-        drawerOverlay: !!drawerOverlay,
-      });
-      return;
-    }
-
-    // Log the actual HTML of the button
-    console.log("Menu button HTML:", mobileMenuBtn.outerHTML);
-    console.log("Menu button styles:", window.getComputedStyle(mobileMenuBtn));
-    console.log(
-      "Menu button display:",
-      window.getComputedStyle(mobileMenuBtn).display
-    );
-
-    function openMenu() {
-      console.log("Attempting to open menu...");
-      mobileMenuBtn.classList.add("active");
-      drawerMenu.classList.add("active");
-      drawerOverlay.classList.add("active");
-      document.body.style.overflow = "hidden";
-      logMenuState("open");
-    }
-
-    function closeMenu() {
-      console.log("Attempting to close menu...");
-      mobileMenuBtn.classList.remove("active");
-      drawerMenu.classList.remove("active");
-      drawerOverlay.classList.remove("active");
-      document.body.style.overflow = "";
-      logMenuState("close");
-    }
-
-    function toggleMenu(e) {
-      console.log("Toggle menu triggered", {
-        event: e ? e.type : "programmatic",
-        currentState: menuState.isOpen,
-      });
-
-      if (e) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-
-      const isOpen = drawerMenu.classList.contains("active");
-      if (isOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    }
-
-    // Add a more direct event listener
-    mobileMenuBtn.addEventListener(
-      "click",
-      function (e) {
-        console.log("Menu button clicked - direct listener");
-        alert("Menu button clicked!"); // Temporary alert to verify click
-        toggleMenu(e);
-      },
-      true
-    ); // Using capture phase
-
-    // Also try mousedown event
-    mobileMenuBtn.addEventListener("mousedown", function (e) {
-      console.log("Menu button mousedown");
-    });
-
-    // Close menu when clicking a link
-    const drawerLinks = drawerMenu.querySelectorAll("a");
-    drawerLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        console.log("Drawer link clicked", {
-          link: link.href,
-          currentMenuState: menuState.isOpen,
-        });
-        closeMenu();
-      });
-    });
-
-    // Close menu on escape key
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && drawerMenu.classList.contains("active")) {
-        console.log("Escape key pressed", {
-          currentMenuState: menuState.isOpen,
-        });
-        closeMenu();
-      }
-    });
-
-    // Close menu on window resize if open
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 768 && drawerMenu.classList.contains("active")) {
-        console.log("Window resized to desktop width", {
-          width: window.innerWidth,
-          currentMenuState: menuState.isOpen,
-        });
-        closeMenu();
-      }
-    });
-
-    // Log initial state
-    logMenuState("initialized");
-  });
-
-  // Add a global click handler to see if clicks are being registered
-  document.addEventListener("click", function (e) {
-    console.log("Document click:", e.target);
-  });
-</script>
 
 <nav>
   <a href="index.html" class="logo">
-    <img src="assets/icons/logo.svg" alt="BVR Innovation Group" />
+    <img
+      src="assets/icons/logo.svg"
+      alt="BVR Innovation Group"
+      width="24"
+      height="24"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
     <span>BVR Innovation Group</span>
   </a>
 
-  <!-- Add onclick directly to the button -->
-  <button
-    class="mobile-menu-btn"
-    aria-label="Toggle menu"
-    onclick="console.log('Inline click handler')"
-  >
+  <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()">
     <span></span>
     <span></span>
     <span></span>
   </button>
 
+
   <div class="nav-links">
     <a href="index.html" id="nav-home">Home</a>
     <a href="about.html" id="nav-about">About</a>
     <a href="units.html" id="nav-units">Our Units</a>
-    <!-- <a href="#" id="nav-contact" data-modal="contact">Contact</a> -->
   </div>
   <button data-modal="contact" class="contact-button">Contact us</button>
 </nav>
@@ -403,10 +309,22 @@
 <!-- Drawer Menu -->
 <div class="drawer-overlay"></div>
 <div class="drawer-menu">
+
+  <div class="drawer-header">
+    <a href="index.html" class="logo"><img src="../assets/icons/logo.svg" alt=""></a>
+    <button class="close-button" onclick="closeMenu()" aria-label="Close menu">
+      <i class="fas fa-times" style="font-size: 20px;"></i>
+    </button>
+  </div>
+
   <div class="nav-links">
     <a href="index.html" id="drawer-nav-home">Home</a>
     <a href="about.html" id="drawer-nav-about">About</a>
     <a href="units.html" id="drawer-nav-units">Our Units</a>
   </div>
-  <button data-modal="contact" class="contact-button">Contact us</button>
+
+  <div></div>
+  <div></div>
+  <div></div>
+  <!-- <button data-modal="contact" class="contact-button">Contact us</button> -->
 </div>

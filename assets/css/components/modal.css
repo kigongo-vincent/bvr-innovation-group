@@ -6,7 +6,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1000;
+  z-index: 9999;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -24,6 +24,7 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
+  z-index: 9998;
 }
 
 .modal-container {
@@ -33,12 +34,13 @@
   margin: 2rem auto;
   background: var(--paper);
   border-radius: 12px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transform: translateY(-20px);
   transition: transform 0.3s ease;
   overflow: hidden;
   max-height: 95vh;
   overflow-y: auto;
+  z-index: 9999;
 }
 
 .modal.active .modal-container {
@@ -102,6 +104,13 @@
   margin-bottom: 7px; /* Reduced from 10px to 7px */
 }
 
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 7px;
+}
+
 .form-group label {
   font-weight: 500;
   color: var(--dark);
@@ -143,20 +152,10 @@
   font-size: 1.1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.submit-button:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
 }
 
 .submit-button i {
   transition: transform 0.2s ease;
-}
-
-.submit-button:hover i {
-  transform: translateX(4px);
 }
 
 /* Responsive Adjustments */
@@ -164,6 +163,22 @@
   .modal-container {
     width: 95%;
     margin: 1rem auto;
+  }
+
+  .form-row{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .budget-range-inputs input{
+    width: 100%;
+  }
+  .budget-range-inputs input:nth-of-type(1){
+    margin-bottom: 10px;
+  }
+
+  .h-separator{
+    display: none;
   }
 
   .modal-content {
@@ -191,7 +206,7 @@
   padding: 1rem 2rem;
   border-radius: 6px;
   background: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transform: translateY(100%);
   opacity: 0;
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -342,7 +357,7 @@
 /*
 #start-project-form .form-group:nth-child(5) {
   margin-bottom: 0 !important; /* Ensure no bottom margin from the element itself */
-}
+/* } */
 
 #start-project-form > *:nth-child(5) {
   grid-row-end: span 1;
@@ -357,4 +372,3 @@
 #start-project-form .form-group:nth-child(6) {
   margin-top: 0 !important;
 }
-*/

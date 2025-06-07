@@ -82,7 +82,7 @@
 
 .unit-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .unit-icon {
@@ -232,6 +232,7 @@
 
   .cta-actions {
     flex-direction: column;
+    align-items: center;
   }
 
   .cta-button {

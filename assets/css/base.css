@@ -4,12 +4,46 @@
   font-family: poppins, "sans-serif";
   padding: 0;
   color: var(--dark);
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* Parallax Styles */
+.parallax-container {
+  position: relative;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 1px;
+  transform-style: preserve-3d;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.parallax-layer-back {
+  transform: translateZ(-1px) scale(2);
+}
+
+.parallax-layer-base {
+  transform: translateZ(0);
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 1;
 }
 
 body {
-  width: 100vw;
-  overflow-x: hidden; /* Hide horizontal overflow */
+  width: 100%;
+  overflow-x: hidden;
   background-color: var(--pale);
+  position: relative;
 }
 
 :root {
@@ -17,7 +51,7 @@ body {
   --pale: #f5f5f5;
   --primary: #3eb8ba;
   --dark: #1e1e1e;
-  --shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
 }
 
 button {
@@ -62,9 +96,11 @@ nav button {
   height: 30px;
 }
 
+
 .logo a:link,
 a:visited,
 a {
+  
   color: var(--dark);
   text-decoration: none;
 }
@@ -75,10 +111,12 @@ a {
 }
 
 .logo span {
-  font-size: 20px;
+  font-size: 16px;
   margin-left: 10px;
   font-weight: bold;
-  text-transform: capitalize;
+  text-transform: uppercase;
+  font-family: "Audiowide", sans-serif;
+
 }
 
 .nav-links {
@@ -150,7 +188,8 @@ a {
   margin-bottom: 0;
 }
 
-.footer a {
+.footer a:link, a:visited, a {
+  color: var(--dark);
   text-decoration: none;
   opacity: 0.8;
   transition: all 0.3s ease;
@@ -212,7 +251,6 @@ a {
 .footer-legal a:hover {
   color: var(--primary);
 }
-
 /* Footer Responsive Styles */
 @media (max-width: 1024px) {
   .footer {
@@ -258,3 +296,11 @@ a {
     padding: 1rem 1.5rem; /* Adjust padding for smaller screens */
   }
 }
+
+/* *{
+  background-position: center;
+  background-size: cover;
+  background: url("https://images.pexels.com/photos/6153343/pexels-photo-6153343.jpeg?auto=compress&cs=tinysrgb&w=1200");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+} */

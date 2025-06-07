@@ -1,0 +1,33 @@
+{
+  "id": 3,
+  "data": [
+    {
+      "id": 1,
+      "title": "Tech Startup Accelerator",
+      "description": "Supporting innovative tech startups with mentorship and funding.",
+      "type": "Technology",
+      "logo": "https://hal-assets-prod.s3.amazonaws.com/programs/8021ea36-ce52-42ae-a9e8-3d576f00a8bc.png"
+    },
+    {
+      "id": 2,
+      "title": "Green Energy Incubator",
+      "description": "Fostering sustainable energy solutions and green technology.",
+      "type": "Sustainability",
+      "logo": "https://hal-assets-prod.s3.amazonaws.com/programs/5a83d505-aab9-4f4a-beb3-f90b287fa288.png"
+    },
+    {
+      "id": 3,
+      "title": "FinTech Innovation Hub",
+      "description": "Advancing financial technology and digital banking solutions.",
+      "type": "Finance",
+      "logo": "https://hal-assets-prod.s3.amazonaws.com/programs/1b83bb7b-36f1-4723-a504-3c57e031172b.png"
+    },
+    {
+      "id": 4,
+      "title": "HealthTech Accelerator",
+      "description": "Supporting healthcare innovation and medical technology.",
+      "type": "Healthcare",
+      "logo": "https://hal-assets-prod.s3.amazonaws.com/programs/50f8532e-347a-4461-baf6-6387884ec3fc.png"
+    }
+  ]
+}
