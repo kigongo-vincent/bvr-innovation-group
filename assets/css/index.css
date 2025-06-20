@@ -263,12 +263,16 @@
 }
 
 .unit-icon {
-  width: 80px;
+  width: max-content;
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
+}
+
+.unit-icon img{
+  width: 250px;
 }
 
 .unit-card h3 {

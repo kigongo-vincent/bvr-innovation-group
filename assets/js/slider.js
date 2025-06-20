@@ -3,18 +3,15 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentIndex = 0;
 
   function nextSlide() {
-    // Remove active and prev classes from all images
+    // Remove 'active' from all images
     images.forEach((img) => {
-      img.classList.remove("active", "prev");
+      img.classList.remove("active");
     });
-
-    // Add prev class to current image
-    images[currentIndex].classList.add("prev");
 
     // Move to next image
     currentIndex = (currentIndex + 1) % images.length;
 
-    // Add active class to new current image
+    // Add 'active' to new current image for fade-in effect
     images[currentIndex].classList.add("active");
   }
 
