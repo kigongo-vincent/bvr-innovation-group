@@ -134,16 +134,16 @@
 }
 
 .lp-logo-wall {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 2rem;
-  max-width: 900px;
-  margin: 0 auto 2rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   align-items: center;
-  background: var(--paper);
-  border-radius: 12px;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
   padding: 2rem 1rem;
-  box-shadow: 0 1px 6px rgba(30, 60, 114, 0.06);
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
 }
 .lp-logo-wall img {
   max-width: 100px;
@@ -282,6 +282,7 @@
 .lp-hero-blur {
   width: 100%;
   height: 30vh;
+
   position: relative;
   overflow: hidden;
   background: none;
@@ -296,7 +297,8 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../images/base/idea.jpg") top center / cover no-repeat;
+    url("https://images.pexels.com/photos/6930601/pexels-photo-6930601.jpeg")
+      top center / cover no-repeat;
   z-index: 1;
 }
 
@@ -321,24 +323,28 @@
 .lp-outcome-card {
   background: var(--paper);
   /* border-radius: 16px; */
-  box-shadow: 0 2px 12px rgba(30, 60, 114, 0.07);
+  box-shadow: 0 2px 12px rgba(225, 225, 225, 0.07);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  min-height: 340px;
+  min-height: max-content;
   padding: 2.2rem 1.7rem 0.5rem 1.7rem;
+  padding-bottom: 4rem;
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+}
+.lp-outcome-card img {
+  mix-blend-mode: multiply;
 }
 .lp-outcome-card.highlight {
   background: var(--paper);
   color: var(--primary);
 }
 .lp-outcome-card:hover {
-  background: var(--primary-light);
-  color: var(--primary);
+  /* background: var(--primary-light); */
+  /* color: var(--primary); */
 }
 .lp-outcome-logo {
   max-width: 100px;
@@ -353,7 +359,7 @@
   margin-bottom: 2.5rem;
   text-align: center;
   text-transform: lowercase;
-  color: var(--primary);
+  /* color: var(--primary); */
   transition: color 0.2s;
 }
 .lp-outcome-card:hover .lp-outcome-name {
@@ -403,11 +409,13 @@
 
 /* Hero Stats Section Styles */
 .lp-hero-stats {
-  background: var(--primary);
-  color: var(--paper);
+  background: var(--paper);
+  /* color: var(--paper); */
   padding: 4rem 0 3rem 0;
   text-align: left;
+  border-radius: 5px;
   margin: 0 auto 0 auto;
+  /* width: 90%; */
 }
 .lp-hero-stats-content {
   max-width: 900px;
@@ -416,28 +424,28 @@
 }
 .lp-hero-stats-headline {
   font-size: 3rem;
-  font-weight: 700;
+  /* font-weight: 700; */
   margin-bottom: 1.5rem;
   line-height: 1.1;
-  color: var(--paper);
+  color: var(--primary);
 }
 .lp-hero-stats-bold {
-  font-weight: 800;
-  color: var(--paper);
+  /* font-weight: 800; */
+  /* color: var(--paper); */
 }
 .lp-hero-stats-subtext {
   font-size: 1.5rem;
   margin-bottom: 2.5rem;
-  color: var(--paper);
+  /* color: var(--paper); */
 }
 .lp-hero-stats-btn {
   background: transparent;
-  color: var(--paper);
-  border: 2px solid var(--paper);
+  /* color: var(--paper); */
+  /* border: 2px solid var(--paper); */
   border-radius: 2px;
   padding: 1rem 2.5rem;
-  font-weight: 700;
-  font-size: 1.2rem;
+  /* font-weight: 700; */
+  /* font-size: 1.2rem; */
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   box-shadow: 0 2px 8px rgba(30, 60, 114, 0.08);
