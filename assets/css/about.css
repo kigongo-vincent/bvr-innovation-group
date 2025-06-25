@@ -22,7 +22,7 @@
 /* About Hero Section */
 .about-hero {
   position: relative;
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   padding: var(--section-padding);
@@ -476,7 +476,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("../images/slider/3.jpg") center/cover no-repeat;
+  background: url("https://res.cloudinary.com/dauv815j5/image/upload/v1750857216/WhatsApp_Image_2025-06-25_at_12.44.34_jz0bl3.jpg") center/cover no-repeat;
   opacity: 0.1;
   z-index: 0;
 }

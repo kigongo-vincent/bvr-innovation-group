@@ -23,6 +23,35 @@
           once: true,
           offset: 100,
         });
+
+        fetch("dump.json")
+          .then((response) => response.json())
+          .then((units) => {
+            const grid = document.getElementById("units-grid");
+            grid.innerHTML = units
+              .map(
+                (unit, idx) => `
+            <div class="unit-card" data-aos="fade-up" data-aos-delay="${
+              200 + idx * 100
+            }">
+              <div class="unit-icon">
+                <img src="${unit.icon}" alt="">
+              </div>
+              <h2>${unit.name}</h2>
+              <h3>${unit.tagline}</h3>
+              ${unit.description
+                .split("\n")
+                .map((line) => `<p>${line}</p>`)
+                .join("")}
+              <a href="${unit.link}" class="unit-link">
+                Learn more <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          `
+              )
+              .join("");
+            AOS.refresh(); // Refresh AOS after DOM update
+          });
       });
     </script>
     <style>
@@ -41,14 +70,19 @@
     <section class="units-hero">
       <div class="hero-background">
         <img
-          src="assets/images/slider/3.jpg"
+          src="https://images.pexels.com/photos/963278/pexels-photo-963278.jpeg"
           alt="Background"
           class="hero-bg-image"
         />
         <div class="hero-overlay"></div>
       </div>
       <div class="units-hero-content" data-aos="fade-up">
-        <h1 class="text-light">One Group. Three Engines of Execution.</h1>
+        <h1 class="text-light">
+          One Group.
+          <span style="color: var(--primary); font-size: inherit"
+            >Three Engines of Execution.</span
+          >
+        </h1>
         <p class="lead text-light">
           BVR Innovation Group operates through five specialised business units
           — each one designed to take ideas beyond the lab, beyond theory, and
@@ -66,120 +100,16 @@
 
     <!-- Units Grid Section -->
     <section class="units-grid-section">
-      <div class="units-grid">
-        <!-- Project Studio -->
-        <!-- <div class="unit-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="unit-icon">
-            <svg width="80" height="80" viewBox="0 0 100 100">
-              <use href="assets/icons/units.svg#project-studio" />
-            </svg>
-          </div>
-          <h2>BVR Project Studio</h2>
-          <h3>Real Projects. Real Impact.</h3>
-          <p>
-            We design and implement innovation and growth projects for
-            development partners, businesses, and institutions.
-          </p>
-          <p>
-            From strategic planning to hands-on execution, we help bold ideas
-            take shape and scale in the real world.
-          </p>
-          <a href="/unit.html?unit=project-studio" class="unit-link"
-            >Learn more <i class="fas fa-arrow-right"></i
-          ></a>
-        </div> -->
-
-        <!-- Launch Lab -->
-        <div class="unit-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="unit-icon">
-              <img src="./assets/icons/BVR launch pad.svg" alt="">
-          </div>
-          <h2>BVR Launch Lab</h2>
-          <h3>Where our digital solutions take flight.</h3>
-          <p>
-            We design, build, and launch digital platforms, SaaS tools, and
-            scalable tech products.
-          </p>
-          <p>
-            From MVP to market-ready, we turn validated ideas into
-            user-friendly, revenue-generating platforms.
-          </p>
-          <a href="/unit-details.html?id=1" class="unit-link"
-            >Learn more <i class="fas fa-arrow-right"></i
-          ></a>
-        </div>
-
-        <!-- Intelligence -->
-        <div class="unit-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="unit-icon">
-                          <img src="./assets/icons/BVR Intelligence.svg" alt="">
-
-          </div>
-          <h2>BVR Intelligence</h2>
-          <h3>Turning data into direction.</h3>
-          <p>
-            We deliver market insights, value chain maps, and intelligence that
-            drive smart decisions.
-          </p>
-          <p>
-            Whether you need data for a new product, sector expansion, or
-            ecosystem development — we provide the strategic lens.
-          </p>
-          <a href="/unit-details.html?id=2" class="unit-link"
-            >Learn more <i class="fas fa-arrow-right"></i
-          ></a>
-        </div>
-
-        <!-- Accelerator Studio -->
-        <div class="unit-card" data-aos="fade-up" data-aos-delay="400">
-          <div class="unit-icon">
-              <img src="./assets/icons/BVR launch pad.svg" alt="">
-            
-          </div>
-          <h2>BVR Accelerator Studio</h2>
-          <h3>Challenge-Driven Growth.</h3>
-          <p>
-            We design and manage custom accelerator programs that help startups,
-            SMEs, and corporate ventures grow.
-          </p>
-          <p>
-            Our accelerators are always built around real-world challenges — not
-            templates.
-          </p>
-          <a href="/unit-details.html?id=3" class="unit-link"
-            >Learn more <i class="fas fa-arrow-right"></i
-          ></a>
-        </div>
-
-        <!-- Horizon -->
-        <!-- <div class="unit-card" data-aos="fade-up" data-aos-delay="500">
-          <div class="unit-icon">
-            <svg width="80" height="80" viewBox="0 0 100 100">
-              <use href="assets/icons/units.svg#horizon" />
-            </svg>
-          </div>
-          <h2>BVR Horizon</h2>
-          <h3>Expanding our future through strategic ventures.</h3>
-          <p>
-            This is where we invest, acquire, or co-build ventures that align
-            with BVR's vision.
-          </p>
-          <p>
-            We don't just advise — we take ownership, scale companies, and shape
-            industries from within.
-          </p>
-          <a href="/unit.html?unit=horizon" class="unit-link"
-            >Learn more <i class="fas fa-arrow-right"></i
-          ></a>
-        </div>
-      </div> -->
+      <div class="units-grid" id="units-grid">
+        <!-- Unit cards will be rendered here -->
+      </div>
     </section>
 
     <!-- Final CTA Section -->
     <section class="cta">
       <div class="cta-background">
         <img
-          src="assets/images/slider/5.jpg"
+          src="https://res.cloudinary.com/dauv815j5/image/upload/v1750857216/WhatsApp_Image_2025-06-25_at_12.44.34_jz0bl3.jpg"
           alt="CTA Background"
           class="cta-bg-image"
         />

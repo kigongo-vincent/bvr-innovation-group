@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BVR Launch Lab | BVR Innovation Group</title>
+    <link rel="stylesheet" href="assets/css/launchpad.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link
+      rel="icon"
+      href="assets/icons/BVR launch pad.svg"
+      type="image/svg+xml"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="lp-hero-blur"></section>
+
+      <!-- Filter/Search Bar -->
+      <section class="lp-filters">
+        <div style="position: relative">
+          <select class="lp-select" id="filter-focus">
+            <option>Focus Area</option>
+            <option>AI</option>
+            <option>Fintech</option>
+            <option>Health</option>
+          </select>
+          <span class="lp-select-arrow">&#9660;</span>
+        </div>
+        <div style="position: relative">
+          <select class="lp-select" id="filter-stage">
+            <option>Stage at Investment</option>
+            <option>Idea</option>
+            <option>MVP</option>
+            <option>Growth</option>
+          </select>
+          <span class="lp-select-arrow">&#9660;</span>
+        </div>
+        <div style="position: relative">
+          <select class="lp-select" id="filter-status">
+            <option>Current Status</option>
+            <option>All</option>
+            <option>Active</option>
+            <option>Launched</option>
+            <option>In Progress</option>
+            <option>Coming Soon</option>
+          </select>
+          <span class="lp-select-arrow">&#9660;</span>
+        </div>
+        <div class="lp-search">
+          <span class="lp-search-icon">&#128269;</span>
+          <input type="text" id="search-input" placeholder="Search" />
+        </div>
+        <button class="lp-btn" id="jobs-board-btn">SEARCH</button>
+      </section>
+
+      <!-- Portfolio Grid Section -->
+      <section class="lp-section">
+        <h2 class="lp-section-title">Our Launches</h2>
+        <div id="lp-grid" class="lp-grid"></div>
+      </section>
+
+      <!-- Portfolio Outcomes Section (New) -->
+      <section class="lp-section">
+        <h2 class="lp-section-title">Portfolio Outcomes</h2>
+        <div class="lp-outcomes-grid">
+          <div class="lp-outcome-card">
+            <img
+              src="assets/images/logos/1-1.png"
+              alt="Partner 1 logo"
+              class="lp-outcome-logo"
+            />
+            <div class="lp-outcome-name">Partner One</div>
+            <div class="lp-outcome-status">PARTNER</div>
+          </div>
+          <div class="lp-outcome-card">
+            <img
+              src="assets/images/logos/1-2.png"
+              alt="Partner 2 logo"
+              class="lp-outcome-logo"
+            />
+            <div class="lp-outcome-name">Partner Two</div>
+            <div class="lp-outcome-status">CLIENT</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hero Stats Section (moved here) -->
+      <section class="lp-hero-stats">
+        <div class="lp-hero-stats-content">
+          <div class="lp-hero-stats-headline">
+            <span class="lp-hero-stats-bold">784 companies. 3,845 jobs.</span
+            ><br />
+            It's time to build.
+          </div>
+          <div class="lp-hero-stats-subtext">
+            Looking for your next startup adventure?
+          </div>
+          <button class="lp-hero-stats-btn">START YOUR SEARCH</button>
+        </div>
+      </section>
+
+      <!-- Logo Wall Section -->
+      <section class="lp-section">
+        <h2 class="lp-section-title">Our Partners & Clients</h2>
+        <div id="lp-logo-wall" class="lp-logo-wall"></div>
+      </section>
+
+      <!-- CTA Section -->
+      <!-- <section class="lp-cta-section">
+        <div class="lp-cta-headline">Ready to build your next big thing?</div>
+        <div class="lp-cta-subtext">
+          Let BVR Launch Lab help you turn your idea into a market-ready
+          product.
+        </div>
+        <a href="/contact.html" class="lp-cta-btn">Start Your Project</a>
+      </section> -->
+    </main>
+
+
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script>
+      // Load navbar and footer
+      fetch("components/navbar.html")
+        .then((r) => r.text())
+        .then((html) => {
+          document.getElementById("navbar-container").innerHTML = html;
+        });
+      fetch("components/footer.html")
+        .then((r) => r.text())
+        .then((html) => {
+          document.getElementById("footer-container").innerHTML = html;
+        });
+    </script>
+    <script src="assets/js/launchpad.js"></script>
+  </body>
+</html>

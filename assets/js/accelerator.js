@@ -88,23 +88,30 @@ function getUrlParameter(name) {
     : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-// Function to fetch accelerator data
-async function fetchAcceleratorData(id) {
+// Function to fetch accelerator data from dump.json using nested IDs
+async function fetchAcceleratorData(unitId, acceleratorId) {
   try {
-    const response = await fetch("./assets/data/ac-data.json");
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    const response = await fetch("./dump.json");
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const data = await response.json();
 
-    // Since data is an array, we can directly find the accelerator
-    const accelerator = data.find((acc) => acc.id === parseInt(id));
+    // Find the unit by id
+    const unit = data.find((u) => String(u.id) === String(unitId));
+    if (!unit || !unit.accelerators)
+      throw new Error(
+        `Unit with ID ${unitId} not found or has no accelerators`
+      );
 
-    if (!accelerator) {
-      throw new Error(`Accelerator with ID ${id} not found`);
-    }
+    // Find the accelerator by id (e.g., "3-1")
+    const accelerator = unit.accelerators.find(
+      (acc) => String(acc.id) === String(acceleratorId)
+    );
+    if (!accelerator || !accelerator.details)
+      throw new Error(
+        `Accelerator with ID ${acceleratorId} not found in unit ${unitId}`
+      );
 
-    return accelerator;
+    return accelerator.details;
   } catch (error) {
     console.warn("Error fetching accelerator data:", error);
     return null;
@@ -113,117 +120,336 @@ async function fetchAcceleratorData(id) {
 
 // Function to update UI with data
 function updateUI(data) {
-  // Update Hero Section
-  const hero = document.querySelector(".hero");
-  hero.innerHTML = `
-    <div class="hero-content">
-      <div class="hero-image" data-aos="fade-right">
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <img src="${data.hero.images.front}" alt="Accelerator Front" />
-            </div>
-            <div class="flip-card-back">
-              <img src="${data.hero.images.back}" alt="Accelerator Back" />
+  try {
+    // HERO SECTION
+    const hero = document.querySelector(".hero");
+    if (hero && data.hero) {
+      let heroImage = "";
+      if (data.hero.images?.front || data.hero.images?.back) {
+        heroImage = `
+          <div class="hero-image" data-aos="fade-right">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                ${
+                  data.hero.images?.front
+                    ? `
+                <div class="flip-card-front">
+                  <img src="${data.hero.images.front}" alt="Accelerator Front" onerror="this.style.display='none';"/>
+                </div>`
+                    : ""
+                }
+                ${
+                  data.hero.images?.back
+                    ? `
+                <div class="flip-card-back">
+                  <img src="${data.hero.images.back}" alt="Accelerator Back" onerror="this.style.display='none';"/>
+                </div>`
+                    : ""
+                }
+              </div>
             </div>
           </div>
+        `;
+      }
+      let heroText = `
+        <div class="hero-text" data-aos="fade-left">
+          ${data.hero.title ? `<h1>${data.hero.title}</h1>` : ""}
+          ${
+            data.hero.description
+              ? `<p >${data.hero.description}</p>`
+              : ""
+          }
+          ${
+            data.hero.location
+              ? `<br/><p style="color: rgba(0,0,0,0.4);" class="location">${data.hero.location}</p>`
+              : ""
+          }
+          <div class="hero-actions">
+            <button class="primary" data-modal="start-project">Apply Now</button>
+            <a href="#program" class="secondary">Not ready to apply?</a>
+          </div>
         </div>
-      </div>
-      <div class="hero-text" data-aos="fade-left">
-        <h1>${data.hero.title}</h1>
-        <p class="lead">${data.hero.description}</p>
-        <p class="location">${data.hero.location}</p>
-        <div class="hero-actions">
-          <button class="primary" data-modal="start-project">Apply Now</button>
-          <a href="#program" class="secondary">Not ready to apply?</a>
+      `;
+      hero.innerHTML = `<div class="hero-content">${heroImage}${heroText}</div>`;
+    } else if (hero) {
+      hero.innerHTML = `<div class="hero-content"><div class="hero-text"><h1>Accelerator</h1></div></div>`;
+    }
+
+    // TIMELINE SECTION
+    const timeline = document.querySelector(".timeline .timeline-grid");
+    if (
+      timeline &&
+      data.timeline?.events &&
+      Array.isArray(data.timeline.events) &&
+      data.timeline.events.length > 0
+    ) {
+      timeline.innerHTML = data.timeline.events
+        .map(
+          (event, index) => `
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="${
+          index * 100
+        }">
+          <div class="timeline-icon">
+            ${event.icon ? `<i class="${event.icon}"></i>` : ""}
+          </div>
+          <div class="timeline-content">
+            ${event.title ? `<h3>${event.title}</h3>` : ""}
+            ${event.date ? `<p class="date">${event.date}</p>` : ""}
+            <div class="timeline-dot"></div>
+          </div>
         </div>
-      </div>
-    </div>
-  `;
+      `
+        )
+        .join("");
+    } else if (timeline) {
+      timeline.innerHTML = "";
+    }
 
-  // Update Timeline Section
-  const timeline = document.querySelector(".timeline .timeline-grid");
-  timeline.innerHTML = data.timeline.events
-    .map(
-      (event, index) => `
-    <div class="timeline-item" data-aos="fade-up" data-aos-delay="${
-      index * 100
-    }">
-      <div class="timeline-icon">
-        <i class="${event.icon}"></i>
-      </div>
-      <div class="timeline-content">
-        <h3>${event.title}</h3>
-        <p class="date">${event.date}</p>
-        <div class="timeline-dot"></div>
-      </div>
-    </div>
-  `
-    )
-    .join("");
-
-  // Update Quote Section
-  const quoteBox = document.querySelector(".quote-box");
-  quoteBox.innerHTML = `
-    <div class="quote-content">
-      <blockquote>${data.quote.text}</blockquote>
-      <div class="quote-author">
-        <img src="${data.quote.author.image}" alt="${data.quote.author.name}" class="author-avatar" />
-        <div class="author-info">
-          <cite class="text-light">${data.quote.author.name}</cite>
-          <span class="text-light">${data.quote.author.role}</span>
+    // QUOTE SECTION
+    const quoteBox = document.querySelector(".quote-box");
+    if (
+      quoteBox &&
+      data.quote &&
+      (data.quote.text ||
+        (data.quote.author &&
+          (data.quote.author.name ||
+            data.quote.author.role ||
+            data.quote.author.image)))
+    ) {
+      quoteBox.innerHTML = `
+        <div class="quote-content">
+          ${
+            data.quote.text ? `<blockquote>${data.quote.text}</blockquote>` : ""
+          }
+          ${
+            data.quote.author
+              ? `<div class="quote-author">
+                  ${
+                    data.quote.author.image
+                      ? `<img src="${data.quote.author.image}" alt="${
+                          data.quote.author.name || ""
+                        }" class="author-avatar" onerror="this.style.display='none';" />`
+                      : ""
+                  }
+                  <div class="author-info">
+                    ${
+                      data.quote.author.name
+                        ? `<cite class="text-light">${data.quote.author.name}</cite>`
+                        : ""
+                    }
+                    ${
+                      data.quote.author.role
+                        ? `<span class="text-light">${data.quote.author.role}</span>`
+                        : ""
+                    }
+                  </div>
+                </div>`
+              : ""
+          }
         </div>
-      </div>
-    </div>
-  `;
+      `;
+    } else if (quoteBox) {
+      quoteBox.innerHTML = "";
+    }
 
-  // Update Team Section
-  const teamGrid = document.querySelector(".team .team-grid");
-  teamGrid.innerHTML = data.team.members
-    .map(
-      (member, index) => `
-    <div class="team-member" data-aos="fade-up" data-aos-delay="${index * 100}">
-      <img src="${member.image}" alt="${member.name}" />
-      <h3>${member.name}</h3>
-      <p>${member.role}</p>
-    </div>
-  `
-    )
-    .join("");
+    // HOW WE WORK SECTION
+    try {
+      renderHowWeWork(data);
+    } catch (e) {
+      console.warn("HowWeWork section error:", e);
+    }
 
-  // Update Partners Section
-  const partnersGrid = document.querySelector(".partners .partners-grid");
-  partnersGrid.innerHTML = `
-    <div class="partner">
-      <blockquote>${data.partners.quote.text}</blockquote>
-      <small>${data.partners.quote.author}</small>
-    </div>
-    <div class="partner-logos">
-      <div class="logo-scroll-container">
-        <div class="logo-scroll">
-          ${data.partners.logos
+    // TEAM SECTION
+    const teamGrid = document.querySelector(".team .team-grid");
+    if (
+      teamGrid &&
+      data.team?.members &&
+      Array.isArray(data.team.members) &&
+      data.team.members.length > 0
+    ) {
+      teamGrid.innerHTML = data.team.members
+        .map(
+          (member, index) => `
+        <div class="team-member" data-aos="fade-up" data-aos-delay="${
+          index * 100
+        }">
+          ${
+            member.image
+              ? `<img src="${member.image}" alt="${
+                  member.name || ""
+                }" onerror="this.style.display='none';" />`
+              : ""
+          }
+          ${member.name ? `<h3>${member.name}</h3>` : ""}
+          ${member.role ? `<p>${member.role}</p>` : ""}
+        </div>
+      `
+        )
+        .join("");
+    } else if (teamGrid) {
+      teamGrid.innerHTML = "";
+    }
+
+    // PARTNERS SECTION
+    const partnersGrid = document.querySelector(".partners .partners-grid");
+    if (
+      partnersGrid &&
+      data.partners &&
+      (data.partners.quote?.text ||
+        (Array.isArray(data.partners.logos) && data.partners.logos.length > 0))
+    ) {
+      // Determine if auto-scroll should be enabled
+      const logos = Array.isArray(data.partners.logos)
+        ? data.partners.logos
+        : [];
+      let enableAutoScroll = false;
+      if (window.innerWidth >= 992) {
+        // Large screens (lg)
+        enableAutoScroll = logos.length >= 10;
+      } else {
+        // Small screens
+        enableAutoScroll = logos.length >= 3;
+      }
+      partnersGrid.innerHTML = `
+        ${
+          data.partners.quote?.text
+            ? `<div class="partner">
+                <blockquote>${data.partners.quote.text}</blockquote>
+                ${
+                  data.partners.quote.author
+                    ? `<small>${data.partners.quote.author}</small>`
+                    : ""
+                }
+              </div>`
+            : ""
+        }
+        ${
+          logos.length > 0
+            ? enableAutoScroll
+              ? `<div class="partner-logos">
+                  <div class="logo-scroll-container">
+                    <div class="logo-scroll">
+                      ${logos
+                        .map(
+                          (logo) => `
+                        <div class="logo-item">
+                          <img src="${logo}" alt="Partner Logo" onerror="this.style.display='none';" />
+                        </div>
+                      `
+                        )
+                        .join("")}
+                    </div>
+                  </div>
+                </div>`
+              : `<div class="partner-logos">
+                  <div class="logo-static-container" style="display: flex; flex-direction: row; gap: 1.5rem; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;">
+                    ${logos
+                      .map(
+                        (logo) => `
+                      <div class="logo-item">
+                        <img src="${logo}" alt="Partner Logo" onerror="this.style.display='none';" />
+                      </div>
+                    `
+                      )
+                      .join("")}
+                  </div>
+                </div>`
+            : ""
+        }
+      `;
+    } else if (partnersGrid) {
+      partnersGrid.innerHTML = "";
+    }
+  } catch (err) {
+    console.error("Error updating UI:", err);
+    showNotFound();
+  }
+}
+
+// Function to render "How We Work" section
+function renderHowWeWork(details) {
+  const howWeWorkSection = document.querySelector(".how-we-work");
+  if (!howWeWorkSection) return;
+  if (
+    !details ||
+    !details.howWeWork ||
+    (!details.howWeWork.tagline &&
+      (!Array.isArray(details.howWeWork.list) ||
+        details.howWeWork.list.length === 0))
+  ) {
+    howWeWorkSection.style.display = "none";
+    return;
+  }
+  howWeWorkSection.style.display = "";
+  const { tagline, list } = details.howWeWork;
+  let html = tagline ? `<h3>${tagline}</h3>` : "";
+  if (Array.isArray(list) && list.length > 0) {
+    html += "<ul>";
+    list.forEach((item) => {
+      html += `<li>${item}</li>`;
+    });
+    html += "</ul>";
+  }
+  howWeWorkSection.innerHTML = html;
+}
+
+function renderBusinessesGet(details) {
+  if (
+    !details.businessesGet ||
+    !details.businessesGet.items ||
+    details.businessesGet.items.length === 0
+  )
+    return "";
+  const { title, items } = details.businessesGet;
+  return `
+    <section class="businesses-get" data-aos="fade-up">
+      <div class="container">
+        <h2>${title || ""}</h2>
+        <ul>
+          ${(items || [])
             .map(
-              (logo) => `
-            <div class="logo-item">
-              <img src="${logo}" alt="Partner Logo" />
-            </div>
-          `
+              (item) => `<li><i class="fas fa-check-circle"></i> ${item}</li>`
             )
             .join("")}
-          ${data.partners.logos
-            .slice(0, 6)
-            .map(
-              (logo) => `
-            <div class="logo-item">
-              <img src="${logo}" alt="Partner Logo" />
-            </div>
-          `
-            )
-            .join("")}
-        </div>
+        </ul>
       </div>
-    </div>
+    </section>
   `;
+}
+
+function renderSelectionCriteria(details) {
+  if (
+    !details.selectionCriteria ||
+    !details.selectionCriteria.items ||
+    details.selectionCriteria.items.length === 0
+  )
+    return "";
+  const { title, items } = details.selectionCriteria;
+  return `
+    <section class="selection-criteria" data-aos="fade-up">
+      <div class="container">
+        <h2>${title || ""}</h2>
+        <ul>
+          ${(items || [])
+            .map((item) => `<li><i class="fas fa-star"></i> ${item}</li>`)
+            .join("")}
+        </ul>
+      </div>
+    </section>
+  `;
+}
+
+function renderBusinessesSelection(details) {
+  const container = document.getElementById("businesses-selection-container");
+  if (!container) return;
+  const businessesGetHtml = renderBusinessesGet(details);
+  const selectionCriteriaHtml = renderSelectionCriteria(details);
+  if (!businessesGetHtml && !selectionCriteriaHtml) {
+    container.style.display = "none";
+    return;
+  }
+  container.style.display = "";
+  container.innerHTML = businessesGetHtml + selectionCriteriaHtml;
 }
 
 // Function to show not found view
@@ -271,11 +497,27 @@ function showNotFound() {
 // Function to initialize the page
 async function initializePage() {
   showSkeletons();
-  const id = getUrlParameter("id") || "1"; // Default to ID 1 if no ID provided
-  const data = await fetchAcceleratorData(id);
+  // Support URLs like ?id=3-1
+  let unitId, acceleratorId;
+  const idParam = getUrlParameter("id");
+  const acceleratorParam = getUrlParameter("accelerator");
+  if (idParam && idParam.includes("-")) {
+    // If id is like "3-1", split it
+    [unitId] = idParam.split("-");
+    acceleratorId = idParam;
+  } else if (idParam && acceleratorParam) {
+    unitId = idParam;
+    acceleratorId = acceleratorParam;
+  } else {
+    showNotFound();
+    return;
+  }
+  const data = await fetchAcceleratorData(unitId, acceleratorId);
   if (data) {
     updateUI(data);
-  }else{
+    renderHowWeWork(data);
+    renderBusinessesSelection(data); // Use the new function here
+  } else {
     showNotFound();
   }
 }

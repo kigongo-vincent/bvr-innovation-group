@@ -1,0 +1,259 @@
+[
+  {
+    "id": 1,
+    "name": "BVR Launch Lab",
+    "tagline": "Where our digital solutions take flight.",
+    "description": "We design, build, and launch digital platforms, SaaS tools, and scalable tech products. From MVP to market-ready, we turn validated ideas into user-friendly, revenue-generating platforms.",
+    "icon": "https://res.cloudinary.com/dauv815j5/image/upload/v1750858100/BVR_launch_pad_ano4kl.svg",
+    "link": "/launchpad.html"
+  },
+  {
+    "id": 2,
+    "name": "BVR Intelligence",
+    "tagline": "Turning data into direction.",
+    "description": "We deliver market insights, value chain maps, and intelligence that drive smart decisions.\nWhether you need data for a new product, sector expansion, or ecosystem development — we provide the strategic lens.",
+    "icon": "https://res.cloudinary.com/dauv815j5/image/upload/v1750858099/BVR_Intelligence_vykz1h.svg",
+    "link": "/unit-details.html?id=2"
+  },
+  {
+    "id": 3,
+    "name": "BVR Accelerator Studio",
+    "tagline": "Challenge-Driven Growth.",
+    "description": "We design and manage custom accelerator programs that help startups, SMEs, and corporate ventures grow.\nOur accelerators are always built around real-world challenges — not templates.",
+    "icon": "https://res.cloudinary.com/dauv815j5/image/upload/v1750858098/BVR_Logo_18-18_bfysxf.svg",
+    "link": "/unit-details.html?id=3",
+    "accelerators": [
+      {
+        "id": "3-5",
+        "title": "Agri-Challenge Accelerator (Uganda)",
+        "description": "Catalyzing Innovation Across Agri-Value Chains Through Real-World Pilots",
+        "type": "Agriculture",
+        "logo": "",
+        "link": "/unit-details.html?id=3&accelerator=3-5",
+        "details": {
+          "hero": {
+            "title": "Agri-Challenge Accelerator",
+            "description": "Catalyzing Innovation Across Agri-Value Chains Through Real-World Pilots\nThe Agri-Challenge Accelerator supports early-stage ventures solving critical challenges across Uganda's agricultural value chains. Through startup-corporate collaboration, the program enables ventures to pilot, validate, and commercialize innovations that improve productivity, resilience, and market access for smallholder farmers and agri-enterprises.Working with partners like Highland Innovation Hub, Bunyonyi Distributors Ltd (BDL) and other ecosystem actors, the Agri-challenge accelerator facilitates proof-of-concept pilots in real operating environments to address long-standing inefficiencies in the agricultural system.",
+            "location": "Uganda, Africa",
+            "images": {
+              "front": "https://images.pexels.com/photos/17797257/pexels-photo-17797257.jpeg",
+              "back": "https://images.pexels.com/photos/9798975/pexels-photo-9798975.jpeg"
+            }
+          },
+          "howWeWork": {
+            "tagline": "How the Accelerator Works",
+            "list": [
+              "Corporate pilot partners to co-design and run PoC pilots with real users",
+              "Farmers, cooperatives, and processors for product validation",
+              "Mentorship from leading founders and technical advisors",
+              "Support toward commercialization and investment readiness"
+            ]
+          },
+          "timeline": {
+            "title": "Program Timeline",
+            "subtitle": "Key dates for the 2025 cohort",
+            "events": [
+              {
+                "icon": "fas fa-calendar-check",
+                "title": "Applications Open",
+                "date": "Jan 20th, 2025"
+              },
+              {
+                "icon": "fas fa-hourglass-end",
+                "title": "Application Deadline",
+                "date": "Mar 10th, 2025"
+              },
+              {
+                "icon": "fas fa-rocket",
+                "title": "Kick Off",
+                "date": "Apr 7th, 2025"
+              },
+              {
+                "icon": "fas fa-campground",
+                "title": "Bootcamp",
+                "date": "May 2025"
+              },
+              {
+                "icon": "fas fa-seedling",
+                "title": "PoC Deployment",
+                "date": "Jun–Aug 2025"
+              },
+              {
+                "icon": "fas fa-trophy",
+                "title": "Demo Day",
+                "date": "Sep 26th, 2025"
+              }
+            ]
+          },
+          "quote": {
+            "text": "We designed this accelerator not just to support startups, but to validate the solutions that can truly transform how agri-value chains work across East Africa.",
+            "author": {
+              "name": "Kamikazi Taylor",
+              "role": "Program Director",
+              "image": "https://res.cloudinary.com/dauv815j5/image/upload/v1750874111/1_gehhfn.jpg"
+            }
+          },
+          "team": {
+            "title": "The Team & Mentors",
+            "members": [
+              {
+                "name": "Kamikazi Taylor",
+                "role": "Program Director",
+                "image": "https://res.cloudinary.com/dauv815j5/image/upload/v1750874111/1_gehhfn.jpg"
+              },
+              {
+                "name": "Rachael Ampaire",
+                "role": "Program Manager",
+                "image": "https://res.cloudinary.com/dauv815j5/image/upload/v1750874111/2_lv5zdv.png"
+              },
+              {
+                "name": "Bram Willem van den Bosch",
+                "role": "CEO and Co-Founder of Emata, Startup Mentor",
+                "image": "https://res.cloudinary.com/dauv815j5/image/upload/v1750874112/3_u15rtm.png"
+              },
+              {
+                "name": "Thijs Boer",
+                "role": "Owner at Hollanda Fairfoods (Winnaz), Startup Mentor",
+                "image": "https://res.cloudinary.com/dauv815j5/image/upload/v1750874114/4_mypqnl.png"
+              }
+            ]
+          },
+          "partners": {
+            "title": "Partners",
+            "logos": [
+              "https://res.cloudinary.com/dauv815j5/image/upload/v1750874343/1-1_xfftbe.png",
+              "https://res.cloudinary.com/dauv815j5/image/upload/v1750874344/1-2_wjpncd.png"
+            ]
+          },
+          "callToAction": {
+            "text": "Register your interest",
+            "link": "/contact.html"
+          }
+        }
+      },
+      {
+        "id": "3-6",
+        "title": "Zida Franchise Accelerator",
+        "description": "Unlocking Growth Through Franchising",
+        "type": "Business Growth",
+        "logo": "",
+        "link": "/unit-details.html?id=3&accelerator=3-6",
+        "details": {
+          "hero": {
+            "title": "Zida Franchise Accelerator",
+            "description": "Equips ambitious SMEs in Uganda with the tools, mentorship, and market access needed to transition from a thriving local business to a scalable franchise network.",
+            "location": "Uganda",
+            "images": {
+              "front": "https://images.pexels.com/photos/7309212/pexels-photo-7309212.jpeg",
+              "back": "https://images.pexels.com/photos/7564192/pexels-photo-7564192.jpeg"
+            }
+          },
+          "timeline": {
+            "title": "Program Timeline",
+            "subtitle": "Key dates for the 2025 cohort",
+            "events": [
+              {
+                "icon": "fas fa-calendar-check",
+                "title": "Applications Open",
+                "date": "Jan 2025"
+              },
+              {
+                "icon": "fas fa-users",
+                "title": "Business Selection",
+                "date": "Mar 2025"
+              },
+              {
+                "icon": "fas fa-rocket",
+                "title": "Kickoff",
+                "date": "Apr 2025"
+              },
+              {
+                "icon": "fas fa-trophy",
+                "title": "Franchise Investor Day & Graduation",
+                "date": "Oct 2025"
+              }
+            ]
+          },
+          "businessesGet": {
+            "title": "What Businesses Get",
+            "items": [
+              "A fully developed franchise blueprint tailored to your business.",
+              "An investable business plan and operational toolkit.",
+              "A comprehensive 'How to Franchise' guide.",
+              "1-on-1 mentorship with experts in franchising, finance, operations, and marketing.",
+              "Exposure visits and learning exchanges with advanced franchise operators.",
+              "Ongoing access to an expert WhatsApp support group.",
+              "Connections to potential investors and franchisees."
+            ]
+          },
+          "selectionCriteria": {
+            "title": "Selection Criteria",
+            "items": [
+              "Profitable and have attempted scaling (e.g., opened additional branches).",
+              "Operationally mature with defined SOPs or systems in place.",
+              "Backed by a strong brand identity and customer following.",
+              "Led by founders committed to franchising as a growth pathway.",
+              "Willing and able to invest time and resources into the pilot.",
+              "Equipped with historical data (2+ years) and clear growth goals."
+            ],
+            "quote": {
+              "text": "Franchising is about more than just expansion - it's about replicating excellence. This pilot gives entrepreneurs a structured path to do just that.",
+              "author": "Brian Ndyaguma",
+              "role": "Business Coach"
+            }
+          },
+          "quote": {
+            "text": "Franchising is about more than just expansion - it's about replicating excellence. This pilot gives entrepreneurs a structured path to do just that",
+            "author": {
+              "name": "Brian Ndyaguma",
+              "role": " Business Coach",
+              "image": "https://res.cloudinary.com/dauv815j5/image/upload/v1750875248/Brian_xmmz4e.jpg"
+            }
+          },
+          "team": {
+            "title": "Program Team",
+            "members": [
+              {
+                "name": "Rachael Ampaire",
+                "role": "Program Coordinator",
+                "image": "https://res.cloudinary.com/dauv815j5/image/upload/v1750874111/2_lv5zdv.png"
+              },
+              {
+                "name": "Brian Ndyaguma",
+                "role": "Business Coach",
+                "image": "https://res.cloudinary.com/dauv815j5/image/upload/v1750875248/Brian_xmmz4e.jpg"
+              },
+              {
+                "name": "Carina Juilfs",
+                "role": "Business Coach",
+                "image": "https://res.cloudinary.com/dauv815j5/image/upload/v1750875250/Picture1_faf9to.png"
+              },
+              {
+                "name": "Eric Oetjen",
+                "role": "Franchise Coach",
+                "image": "https://res.cloudinary.com/dauv815j5/image/upload/v1750875251/Picture2_swsquc.png"
+              },
+              {
+                "name": "Julie McBride",
+                "role": "Franchise Coach",
+                "image": "https://res.cloudinary.com/dauv815j5/image/upload/v1750875252/Picture3_ay7mxn.png"
+              }
+            ]
+          },
+          "partners": {
+            "title": "Delivery Partners",
+            "logos": [
+              "https://res.cloudinary.com/dauv815j5/image/upload/v1750875277/Picture4_vccroy.png",
+              "https://res.cloudinary.com/dauv815j5/image/upload/v1750875291/Picture5_gbybeu.png",
+              "https://res.cloudinary.com/dauv815j5/image/upload/v1750875293/Picture6_whzidp.png"
+            ]
+          },
+          "callToAction": {
+            "text": "Ready to Scale Your Business Through Franchising? Contact us.",
+            "link": "/contact.html"
+          }
+        }
+      }
+    ]
+  }
+]

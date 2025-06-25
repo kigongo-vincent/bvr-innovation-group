@@ -192,7 +192,7 @@
     <!-- footer container -->
     <div id="footer-container"></div>
 
-     <!-- Modal Components -->
+    <!-- Modal Components -->
     <div id="modal-container"></div>
     <script>
       // Show skeletons immediately
@@ -203,39 +203,52 @@
         <div class="skeleton-card"></div>
       `;
       setTimeout(() => {
-        fetch("./assets/data/units.json")
+        fetch("./dump.json")
           .then((response) => response.json())
-          .then((data) => {
+          .then((units) => {
             const urlParams = new URLSearchParams(window.location.search);
             const idFromUrl = parseInt(urlParams.get("id"));
             const grid = document.getElementById("accelerators-grid");
-            if (data.id === idFromUrl) {
-              grid.innerHTML = data.data
-                .map(
-                  (accelerator) => `
-                <div class="accelerator-card fade-in">
-                  ${
-                    accelerator.logo
-                      ? `<img src="${accelerator.logo}" alt="${accelerator.title} logo" class="accelerator-logo" />`
-                      : ""
-                  }
-                  <h2>${accelerator.title}</h2>
-                  <div class="accelerator-type">${accelerator.type}</div>
-                  <p>${accelerator.description}</p>
-                  <button onclick="location.href='accelerator.html?id=${
-                    accelerator.id
-                  }'" class="apply-btn text-light">View details</button>
-                </div>
-              `
-                )
-                .join("");
+            const unit = units.find((u) => u.id === idFromUrl);
+
+            if (
+              unit &&
+              Array.isArray(unit.accelerators) &&
+              unit.accelerators.length > 0
+            ) {
+              let cards = unit.accelerators.map(
+                (accelerator) => `
+                  <div class="accelerator-card fade-in">
+                    ${
+                      accelerator.logo
+                        ? `<img src="${accelerator.logo}" alt="${accelerator.title} logo" class="accelerator-logo" />`
+                        : ""
+                    }
+                    <h2>${accelerator.title}</h2>
+                    <div class="accelerator-type">${accelerator.type}</div>
+                    <p>${accelerator.description}</p>
+                    <button onclick="location.href='accelerator.html?id=${
+                      accelerator.id
+                    }'" class="apply-btn text-light">View details</button>
+                  </div>
+                `
+              );
+
+              // Add empty cards if less than 3
+              while (cards.length < 3) {
+                cards.push(
+                  '<div class="accelerator-card" style="background:transparent;box-shadow:none;border:none"></div>'
+                );
+              }
+
+              grid.innerHTML = cards.join("");
             } else {
               grid.innerHTML = `
                 <div class="notfound-container fade-in">
                   <div class="notfound-content">
                     <i class="fas fa-exclamation-triangle"></i>
                     <h2>Accelerator Not Found</h2>
-                    <p>We couldn't find the requested accelerator. Please check the URL or try again later.</p>
+                    <p>We couldn't find the requested accelerator or this unit has no accelerators. Please check the URL or try again later.</p>
                     <button onclick="window.location.href='units.html'">Back to units</button>
                   </div>
                 </div>

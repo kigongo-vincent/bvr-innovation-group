@@ -11,7 +11,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="./assets/js/slider.js" defer></script>
     <script src="./assets/js/components.js" defer></script>
     <script src="./assets/js/parallax.js" defer></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -23,6 +22,32 @@
           once: true,
           offset: 100,
         });
+        // Stacked hero drop animation
+        const images = document.querySelectorAll(".stacked-hero-image");
+        // Set z-index so first image is on top, all below overlay
+        images.forEach((img, i) => {
+          img.style.zIndex = 99 - i;
+        });
+        let current = 0;
+        function dropNext() {
+          if (current < images.length - 1) {
+            setTimeout(() => {
+              images[current].classList.add("drop-out-horizontal");
+              current++;
+              dropNext();
+            }, 2000); // 2 seconds per image
+          } else {
+            // Reset all except the top image, then restart
+            setTimeout(() => {
+              images.forEach((img, i) => {
+                if (i !== 0) img.classList.remove("drop-out-horizontal");
+              });
+              current = 0;
+              dropNext();
+            }, 2000);
+          }
+        }
+        dropNext();
       });
     </script>
     <script src="./assets/js/base.js" defer></script>
@@ -34,35 +59,39 @@
 
     <!-- hero section with parallax -->
     <section class="hero parallax-container">
-      <div class="parallax-layer parallax-layer-back" data-speed="0.5">
-        <div class="slider-container" data-aos="fade">
+      <div class="parallax-layer parallax-layer-back">
+        <div class="stacked-hero-container">
           <img
-            src="assets/images/slider/2.jpg"
+            src="https://res.cloudinary.com/dauv815j5/image/upload/v1750857142/landing_page_banner_image_1_i4t1nk.jpg"
             alt="Slider 2"
-            class="slider-image"
+            class="stacked-hero-image"
           />
           <img
-            src="assets/images/slider/3.jpg"
+            src="https://res.cloudinary.com/dauv815j5/image/upload/v1750857142/landing_page_banner_image_2_hpqzan.jpg"
             alt="Slider 3"
-            class="slider-image"
+            class="stacked-hero-image"
           />
           <img
-            src="assets/images/slider/7.jpg"
+            src="https://res.cloudinary.com/dauv815j5/image/upload/v1750857144/landing_page_banner_image_3_zimmoj.jpg"
             alt="Slider 4"
-            class="slider-image"
+            class="stacked-hero-image"
           />
           <img
-            src="assets/images/slider/5.jpg"
+            src="https://res.cloudinary.com/dauv815j5/image/upload/v1750857144/landing_page_banner_image_4_nbqhfu.jpg"
             alt="Slider 5"
-            class="slider-image"
+            class="stacked-hero-image"
           />
-
+          <img
+            src="https://res.cloudinary.com/dauv815j5/image/upload/v1750857144/landing_page_image_5_leul7q.jpg"
+            alt="Slider 6"
+            class="stacked-hero-image"
+          />
         </div>
       </div>
       <div class="parallax-layer parallax-layer-base">
         <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
           <h1>Bend the Future</h1>
-          <p>
+          <p style="font-size: 16px">
             We commercialise innovation — turning ideas into market-ready
             ventures, <br />
             platforms, and growth programs.
@@ -81,7 +110,7 @@
       <div class="intro-content">
         <div class="intro-illustration" data-aos="fade-right">
           <img
-            src="assets/icons/who-we-are.svg"
+            src="https://res.cloudinary.com/dauv815j5/image/upload/v1750857217/Who_are_we_oyqzcx.gif"
             alt="Who We Are Illustration"
           />
         </div>
@@ -122,7 +151,10 @@
               <!-- <svg width="100"  viewBox="0 0 200 200">
                 <use href="assets/icons/BVR launch pad.svg" />
               </svg> -->
-              <img src="./assets/icons/BVR launch pad.svg" alt="">
+              <img
+                src="https://res.cloudinary.com/dauv815j5/image/upload/v1750858100/BVR_launch_pad_ano4kl.svg"
+                alt=""
+              />
             </div>
             <h3>BVR Launch Lab</h3>
             <p>
@@ -133,8 +165,10 @@
 
           <div class="unit-card" data-aos="fade-up" data-aos-delay="300">
             <div class="unit-icon">
-              <img src="./assets/icons/BVR Intelligence.svg" alt="">
-             
+              <img
+                src="https://res.cloudinary.com/dauv815j5/image/upload/v1750858099/BVR_Intelligence_vykz1h.svg"
+                alt=""
+              />
             </div>
             <h3>BVR Intelligence</h3>
             <p>
@@ -145,7 +179,10 @@
 
           <div class="unit-card" data-aos="fade-up" data-aos-delay="400">
             <div class="unit-icon">
-                            <img src="./assets/icons/BVR launch pad.svg" alt="">
+              <img
+                src="https://res.cloudinary.com/dauv815j5/image/upload/v1750858098/BVR_Logo_18-18_bfysxf.svg"
+                alt=""
+              />
             </div>
             <h3>BVR Accelerator Studio</h3>
             <p>
@@ -180,7 +217,7 @@
       <div class="philosophy-content">
         <div class="philosophy-shape" data-aos="zoom-in" data-aos-delay="100">
           <img
-            src="assets/icons/philosophy-shape.svg"
+            src="https://res.cloudinary.com/dauv815j5/image/upload/v1750857215/We_are_the_team_you_call..._tx4cnv.gif"
             alt="Abstract shape representing movement and innovation"
           />
         </div>
@@ -210,7 +247,9 @@
           <div class="belief-card" data-aos="fade-up" data-aos-delay="100">
             <div
               class="belief-image"
-              style="background-image: url('assets/images/beliefs/adapt.jpg')"
+              style="
+                background-image: url('https://res.cloudinary.com/dauv815j5/image/upload/v1750857798/adapt_flxplh.jpg');
+              "
             >
               <div class="belief-overlay"></div>
             </div>
@@ -224,7 +263,7 @@
             <div
               class="belief-image"
               style="
-                background-image: url('assets/images/beliefs/evolution.jpg');
+                background-image: url('https://res.cloudinary.com/dauv815j5/image/upload/v1750857799/evolution_kuthvr.jpg');
               "
             >
               <div class="belief-overlay"></div>
@@ -241,7 +280,9 @@
           <div class="belief-card" data-aos="fade-up" data-aos-delay="300">
             <div
               class="belief-image"
-              style="background-image: url('assets/images/beliefs/balance.jpg')"
+              style="
+                background-image: url('https://res.cloudinary.com/dauv815j5/image/upload/v1750857799/balance_jkfjf9.jpg');
+              "
             >
               <div class="belief-overlay"></div>
             </div>
@@ -258,7 +299,7 @@
             <div
               class="belief-image"
               style="
-                background-image: url('assets/images/beliefs/opportunity.jpg');
+                background-image: url('https://res.cloudinary.com/dauv815j5/image/upload/v1750857799/opportunity_seeuhz.jpg');
               "
             >
               <div class="belief-overlay"></div>

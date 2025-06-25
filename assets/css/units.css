@@ -4,7 +4,7 @@
 /* Units Hero Section */
 .units-hero {
   position: relative;
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   color: var(--text-light);
@@ -65,24 +65,38 @@
 }
 
 .units-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .units-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .units-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .unit-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background: white;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .unit-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .unit-icon {
@@ -110,12 +124,15 @@
 }
 
 .unit-link {
+  width: 100%;
+  align-self: stretch;
+  margin-top: auto;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   color: var(--primary-color);
   text-decoration: none;
   font-weight: 600;
-  margin-top: 1rem;
   transition: color 0.3s ease;
 }
 
