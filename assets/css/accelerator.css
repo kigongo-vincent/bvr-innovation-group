@@ -390,7 +390,7 @@
 .program-details {
   padding: 120px 0;
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("../images/base/bg.jpg") center/cover no-repeat fixed;
+    url("https://res.cloudinary.com/dauv815j5/image/upload/v1750881532/bg_xgvyej.jpg") center/cover no-repeat fixed;
   position: relative;
 }
 
