@@ -90,7 +90,7 @@
   margin-top: 7rem;
   margin-bottom: 2rem;
   color: var(--dark);
-  font-family: "Audiowide", sans-serif;
+  /* font-family: "Audiowide", sans-serif; */
   text-transform: uppercase;
   letter-spacing: 1px;
 }

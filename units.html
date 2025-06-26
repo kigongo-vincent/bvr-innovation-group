@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Our Units - BVR Innovation Group</title>
     <link href="./assets/css/units.css" rel="stylesheet" />
+    <link href="./assets/css/index.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -23,6 +24,32 @@
           once: true,
           offset: 100,
         });
+        // Stacked hero drop animation
+        const images = document.querySelectorAll(".stacked-hero-image");
+        // Set z-index so first image is on top, all below overlay
+        images.forEach((img, i) => {
+          img.style.zIndex = 99 - i;
+        });
+        let current = 0;
+        function dropNext() {
+          if (current < images.length - 1) {
+            setTimeout(() => {
+              images[current].classList.add("drop-out-horizontal");
+              current++;
+              dropNext();
+            }, 2000); // 2 seconds per image
+          } else {
+            // Reset all except the top image, then restart
+            setTimeout(() => {
+              images.forEach((img, i) => {
+                if (i !== 0) img.classList.remove("drop-out-horizontal");
+              });
+              current = 0;
+              dropNext();
+            }, 2000);
+          }
+        }
+        dropNext();
 
         fetch("dump.json")
           .then((response) => response.json())
@@ -60,41 +87,67 @@
         background: white;
         box-shadow: none;
       }
+      .slider-container::after {
+        background: rgba(0, 0, 0, 0.4) !important;
+      }
     </style>
   </head>
   <body>
     <!-- navbar container -->
     <div id="navbar-container"></div>
 
-    <!-- Hero Section -->
-    <section class="units-hero">
-      <div class="hero-background">
-        <img
-          src="https://images.pexels.com/photos/963278/pexels-photo-963278.jpeg"
-          alt="Background"
-          class="hero-bg-image"
-        />
-        <div class="hero-overlay"></div>
+    <!-- hero section with stacked animation -->
+    <section class="hero parallax-container">
+      <div class="parallax-layer parallax-layer-back">
+        <div class="stacked-hero-container">
+          <img
+            src="https://res.cloudinary.com/dauv815j5/image/upload/v1750857142/landing_page_banner_image_1_i4t1nk.jpg"
+            alt="Slider 1"
+            class="stacked-hero-image"
+          />
+          <img
+            src="https://res.cloudinary.com/dauv815j5/image/upload/v1750857142/landing_page_banner_image_2_hpqzan.jpg"
+            alt="Slider 2"
+            class="stacked-hero-image"
+          />
+          <img
+            src="https://res.cloudinary.com/dauv815j5/image/upload/v1750857144/landing_page_banner_image_3_zimmoj.jpg"
+            alt="Slider 3"
+            class="stacked-hero-image"
+          />
+          <img
+            src="https://res.cloudinary.com/dauv815j5/image/upload/v1750857144/landing_page_banner_image_4_nbqhfu.jpg"
+            alt="Slider 4"
+            class="stacked-hero-image"
+          />
+          <img
+            src="https://res.cloudinary.com/dauv815j5/image/upload/v1750857144/landing_page_image_5_leul7q.jpg"
+            alt="Slider 5"
+            class="stacked-hero-image"
+          />
+        </div>
       </div>
-      <div class="units-hero-content" data-aos="fade-up">
-        <h1 class="text-light">
-          One Group.
-          <span style="color: var(--primary); font-size: inherit"
-            >Three Engines of Execution.</span
-          >
-        </h1>
-        <p class="lead text-light">
-          BVR Innovation Group operates through five specialised business units
-          — each one designed to take ideas beyond the lab, beyond theory, and
-          into real markets. Whether you're launching a platform, scaling an
-          initiative, investing in a venture, or designing a growth strategy,
-          our units are purpose-built to deliver what innovation needs most:
-          execution.
-        </p>
-        <p class="text-light">
-          Explore each unit below to discover how we commercialise innovation —
-          challenge by challenge, venture by venture.
-        </p>
+      <div class="parallax-layer parallax-layer-base">
+        <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
+          <h1 class="text-light">
+            One Group.
+            <span style="color: var(--primary); font-size: inherit"
+              >Three Engines of Execution.</span
+            >
+          </h1>
+          <p class="lead text-light">
+            BVR Innovation Group operates through five specialised business
+            units — each one designed to take ideas beyond the lab, beyond
+            theory, and into real markets. Whether you're launching a platform,
+            scaling an initiative, investing in a venture, or designing a growth
+            strategy, our units are purpose-built to deliver what innovation
+            needs most: execution.
+          </p>
+          <p class="text-light">
+            Explore each unit below to discover how we commercialise innovation
+            — challenge by challenge, venture by venture.
+          </p>
+        </div>
       </div>
     </section>
 
