@@ -100,48 +100,172 @@ const launchpadLogos = [
   },
 ];
 
+function showLaunchpadModal(project) {
+  // Remove any existing modal
+  const existing = document.getElementById("lp-modal-overlay");
+  if (existing) existing.remove();
+
+  // Decorative topo background image
+  const topoImg = "assets/img/contours.svg";
+
+  // Use project.logo if present, else fallback to a placeholder or empty string
+  const logo = project.logo || "";
+
+  // Milestones section
+  let milestonesHtml = "";
+  if (project.milestones) {
+    milestonesHtml += `<div style='font-weight:700;margin-bottom:0.3rem;'>Milestones</div>`;
+    if (project.milestones.stage) {
+      milestonesHtml += `<div><span style='font-weight:700;'>Current Stage:</span> ${project.milestones.stage}</div>`;
+    }
+    if (project.milestones.ipo) {
+      milestonesHtml += `<div><span style='font-weight:700;'>IPO:</span> ${project.milestones.ipo}</div>`;
+    }
+    if (project.milestones.acquirer) {
+      milestonesHtml += `<div><span style='font-weight:700;'>Acquirer:</span> ${project.milestones.acquirer}</div>`;
+    }
+  }
+
+  // Links section
+  let linksHtml = "";
+  if (project.links && project.links.length) {
+    linksHtml = `<div style='display:flex;gap:0.5rem;'>${project.links
+      .map(
+        (link) =>
+          `<a href='${link.url}' target='_blank' style='display:inline-block;background:#4fc3f7;color:#fff;border-radius:4px;width:32px;height:32px;text-align:center;line-height:32px;font-size:1.2rem;'><i class='${link.icon}'></i></a>`
+      )
+      .join("")}</div>`;
+  }
+
+  // News section
+  let newsHtml = "";
+  if (project.news) {
+    newsHtml = `
+      <div style='display:flex;gap:1.2rem;align-items:flex-start;'>
+        ${
+          project.bgValue
+            ? `<img src='${project.bgValue}' alt='news' style='width:180px;height:auto;border-radius:4px;object-fit:cover;flex-shrink:0;'/>`
+            : ""
+        }
+        <div style='flex:1 1 0;min-width:0;color:#222;font-size:1.08rem;'>
+          <div>${project.news.text || ""}</div>
+          ${
+            project.news.link
+              ? `<a href='${project.news.link}' target='_blank' style='display:inline-block;margin-top:0.7rem;color:#00bcd4;font-weight:700;text-decoration:none;font-size:1.1rem;'>Read More &rarr;</a>`
+              : ""
+          }
+        </div>
+      </div>
+    `;
+  }
+
+  // Modal HTML
+  const overlay = document.createElement("div");
+  overlay.id = "lp-modal-overlay";
+  overlay.className = "lp-modal-overlay";
+  overlay.innerHTML = `
+    <div class="lp-modal-content">
+      <button class="lp-modal-close" aria-label="Close">&times;</button>
+      <br/>
+      <div class="lp-modal-body" style="padding:0;">
+        <div style="background:#f8f8f8;position:relative;padding:2.5rem 2rem 2rem 2rem;overflow:hidden;">
+
+        
+          <div style='position:absolute;top:0;right:0;width:350px;height:350px;z-index:0;pointer-events:none;overflow:hidden;'>
+            <img src='${topoImg}' alt='' style='width:100%;height:100%;object-fit:cover;opacity:0.18;'/>
+          </div>
+          ${
+            logo
+              ? `<img src='${logo}' alt='${project.title}' style='display:block;margin:0 auto 1.5rem auto;max-width:180px;max-height:60px;position:relative;z-index:1;'/>`
+              : ""
+          }
+          <div style='position:relative;z-index:1;text-align:center;font-size:2.5rem;font-family:serif;font-weight:400;margin-bottom:1.5rem;'>${
+            project.title
+          }</div>
+          <div class="lp-modal-info-row" style='position:relative;z-index:1;'>
+            <div class="lp-modal-info-col">
+              ${milestonesHtml}
+            </div>
+            <div class="lp-modal-info-col">
+              ${linksHtml}
+              ${
+                project.builders && project.builders.length
+                  ? `<div style='margin-top:0.7rem;font-size:0.98rem;color:#444;'><span style='font-weight:700;'>Builders:</span> ${project.builders.join(
+                      ", "
+                    )}</div>`
+                  : ""
+              }
+            </div>
+          </div>
+        </div>
+        <div style='padding:2rem 2rem 0 2rem;'>
+          <div style='font-size:1.5rem;font-weight:700;margin-bottom:0.7rem;'>Company Profile</div>
+          <div style='font-size:1.08rem;color:#222;margin-bottom:2.2rem;'>${
+            project.profile || project.desc || ""
+          }</div>
+          <hr style='margin:1.5rem 0 1.5rem 0;border:none;border-top:1px solid #ddd;'/>
+          <div style='font-size:1.5rem;font-weight:700;margin-bottom:1.2rem;'>Investment News</div>
+          ${newsHtml}
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  // Animate in
+  setTimeout(() => overlay.classList.add("open"), 10);
+
+  // Close modal on overlay or button click, with animation
+  function closeModal() {
+    overlay.classList.remove("open");
+    overlay.classList.add("close");
+    overlay.addEventListener("transitionend", function handler(e) {
+      if (e.target === overlay) {
+        overlay.removeEventListener("transitionend", handler);
+        overlay.remove();
+      }
+    });
+  }
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay || e.target.classList.contains("lp-modal-close")) {
+      closeModal();
+    }
+  });
+}
+
+function addLaunchpadCardListeners() {
+  const cards = document.querySelectorAll(".lp-card");
+  cards.forEach((card) => {
+    card.addEventListener("click", function () {
+      const idx = this.getAttribute("data-index");
+      showLaunchpadModal(launchpadProjects[idx]);
+    });
+  });
+}
+
 function renderPortfolioGrid() {
   const grid = document.getElementById("lp-grid");
   if (!grid) return;
   grid.innerHTML = launchpadProjects
     .map((card, idx) => {
       return `
-      <div class="lp-card" data-index="${idx}" style="background: url('${
-        card.bgValue
-      }') center/cover no-repeat; position: relative; color: ${
-        card.textColor
-      };">
+      <div class="lp-card" data-index="${idx}" style="background: url('${card.bgValue}') center/cover no-repeat; position: relative; color: ${card.textColor};">
         <div class='lp-card-overlay'></div>
         <div class="lp-card-content" style="position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
           <div>
-            ${
-              card.logo
-                ? `<img src="${card.logo}" alt="${card.title}" class="lp-card-logo" style="filter: brightness(0) invert(1); height: 32px; margin-bottom: 1rem;" />`
-                : ""
-            }
-            <div class="lp-card-title" style="color: ${
-              card.textColor
-            }; font-size: 2rem; font-weight: 700; text-transform: lowercase; margin-bottom: 1.2rem;">${
-        card.title
-      }</div>
-            <div class="lp-card-desc" style="color: ${
-              card.textColor
-            }; font-size: 1.15rem; font-weight: 400; margin-bottom: 2.5rem;">${
-        card.desc
-      }</div>
+            <div class="lp-card-title" style="color: ${card.textColor}; font-size: 2rem; font-weight: 700; text-transform: lowercase; margin-bottom: 1.2rem;">${card.title}</div>
+            <div class="lp-card-desc" style="color: ${card.textColor}; font-size: 1.15rem; font-weight: 400; margin-bottom: 2.5rem;">${card.desc}</div>
           </div>
-          <div class="lp-card-status" style="color: ${
-            card.textColor
-          }; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.5px;">
-            ${card.statusLabel} <span style="font-weight: 700;">${
-        card.status
-      }</span>
+          <div class="lp-card-status" style="color: ${card.textColor}; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.5px;">
+            ${card.statusLabel} <span style="font-weight: 700;">${card.status}</span>
           </div>
         </div>
       </div>
     `;
     })
     .join("");
+  addLaunchpadCardListeners();
 }
 
 function renderLogoWall() {

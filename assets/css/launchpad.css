@@ -469,3 +469,108 @@
     padding: 0.8rem 1.5rem;
   }
 }
+
+/* Launchpad Modal Styles */
+.lp-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.lp-modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lp-modal-overlay.close {
+  opacity: 0;
+  pointer-events: none;
+}
+.lp-modal-content {
+  background: #fff;
+  max-height: 95vh;
+  max-width: 95vw;
+  overflow-y: auto;
+  border-radius: 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  position: relative;
+  width: 100%;
+  transform: scale(0.96) translateY(30px);
+  opacity: 0;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.lp-modal-overlay.open .lp-modal-content {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+.lp-modal-overlay.close .lp-modal-content {
+  transform: scale(0.96) translateY(30px);
+  opacity: 0;
+}
+.lp-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  z-index: 2;
+  line-height: 1;
+  padding: 0;
+}
+@media (max-width: 600px) {
+  .lp-modal-content {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    max-width: 99vw;
+  }
+}
+@media (min-width: 1024px) {
+  .lp-modal-content {
+    width: 60vw;
+    max-height: 95vh;
+    min-width: 400px;
+  }
+}
+
+/* Add any extra modal overrides for the hardcoded layout */
+.lp-modal-body {
+  padding: 0 !important;
+}
+
+.lp-modal-info-row {
+  display: flex;
+  gap: 2.5rem;
+  margin-bottom: 0.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.lp-modal-info-col {
+  flex: 1 1 0;
+  min-width: 0;
+}
+@media (max-width: 700px) {
+  .lp-modal-info-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+.lp-modal-info-col .lp-modal-link {
+  margin-bottom: 0.3rem;
+}
+.lp-modal-info-col div {
+  margin-bottom: 0.3rem;
+}
