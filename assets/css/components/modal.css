@@ -93,8 +93,8 @@
 
 /* Adjust spacing within the budget/description wrapper */
 #start-project-form > div > .form-group {
-    margin-bottom: 0; /* Remove space between these specific form groups */
-    margin-top: 0; /* Ensure no top space either */
+  margin-bottom: 0; /* Remove space between these specific form groups */
+  margin-top: 0; /* Ensure no top space either */
 }
 
 .form-group {
@@ -165,19 +165,19 @@
     margin: 1rem auto;
   }
 
-  .form-row{
+  .form-row {
     display: flex;
     flex-direction: column;
   }
 
-  .budget-range-inputs input{
+  .budget-range-inputs input {
     width: 100%;
   }
-  .budget-range-inputs input:nth-of-type(1){
+  .budget-range-inputs input:nth-of-type(1) {
     margin-bottom: 10px;
   }
 
-  .h-separator{
+  .h-separator {
     display: none;
   }
 
@@ -371,4 +371,83 @@
 
 #start-project-form .form-group:nth-child(6) {
   margin-top: 0 !important;
+}
+
+/* Send via WhatsApp/Email Button Styles */
+.send-via-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.whatsapp-btn {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+.whatsapp-btn:hover,
+.whatsapp-btn:focus {
+  background: var(--primary);
+  color: #fff;
+}
+
+.email-btn {
+  background: var(--primary);
+  color: #fff;
+  border: 2px solid var(--primary);
+}
+.email-btn:hover,
+.email-btn:focus {
+  background: #222;
+  color: #fff;
+  border-color: #222;
+}
+
+.send-via-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 13.5px;
+  font-weight: 400;
+  border-radius: 6px;
+  padding: 1rem 2rem;
+  border: none;
+  cursor: pointer;
+  transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+  box-shadow: none;
+  width: 100%;
+  justify-content: center;
+}
+
+.send-via-btn:hover,
+.send-via-btn:focus {
+  background: #222;
+  color: #fff;
+  box-shadow: 0 4px 24px 0 #2222;
+}
+
+.send-via-btn i {
+  font-size: 1.3em;
+  color: inherit;
+}
+
+.send-via-disclaimer {
+  display: block;
+  margin-top: 0.7rem;
+  font-size: 0.75rem;
+  color: #bbb;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .send-via-actions {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .send-via-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
