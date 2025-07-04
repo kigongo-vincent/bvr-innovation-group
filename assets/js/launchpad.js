@@ -283,7 +283,273 @@ function renderLogoWall() {
     .join("");
 }
 
+// Fetch and render data from launchpad.json
+let allVentures = [];
+let allEcosystems = [];
+
+async function fetchAndRenderLaunchpad() {
+  const response = await fetch("launchpad.json");
+  const data = await response.json();
+  allVentures = data.ventures;
+  allEcosystems = data.ecosystem_infrastructure;
+  populateSectorFilter();
+  populateStatusFilter();
+  applyFiltersAndRender();
+  setupFilterListeners();
+}
+
+function getUniqueSectors() {
+  const sectors = [
+    ...allVentures.map((v) => v.sector),
+    ...allEcosystems.map((e) => e.sector),
+  ];
+  return Array.from(new Set(sectors)).sort();
+}
+
+function getUniqueStatuses() {
+  const statuses = allVentures.map((v) => v.status).filter(Boolean);
+  return Array.from(new Set(statuses)).sort();
+}
+
+function populateSectorFilter() {
+  const sectorSelect = document.getElementById("filter-sector");
+  if (!sectorSelect) return;
+  const sectors = getUniqueSectors();
+  sectorSelect.innerHTML =
+    '<option value="">All Sectors</option>' +
+    sectors.map((s) => `<option value="${s}">${s}</option>`).join("");
+}
+
+function populateStatusFilter() {
+  const statusSelect = document.getElementById("filter-status");
+  if (!statusSelect) return;
+  const statuses = getUniqueStatuses();
+  statusSelect.innerHTML =
+    '<option value="">All Statuses</option>' +
+    statuses.map((s) => `<option value="${s}">${s}</option>`).join("");
+}
+
+// --- Airbnb-inspired Type Chip Filter Logic ---
+
+function setupTypeChipListeners() {
+  const chips = document.querySelectorAll(".lp-chip");
+  chips.forEach((chip) => {
+    chip.addEventListener("click", function () {
+      chips.forEach((c) => c.classList.remove("active"));
+      this.classList.add("active");
+      // Set the filter type value for filtering
+      document.getElementById("filter-type").value =
+        this.getAttribute("data-type");
+      applyFiltersAndRender();
+    });
+  });
+}
+
+// Remove the select for filter-type from setupFilterListeners
+function setupFilterListeners() {
+  ["filter-sector", "filter-status", "search-input"].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener("input", applyFiltersAndRender);
+      if (el.tagName === "SELECT") {
+        el.addEventListener("change", applyFiltersAndRender);
+      }
+    }
+  });
+  // Type chips
+  setupTypeChipListeners();
+  // Clear Filters
+  const clearFiltersBtn = document.getElementById("clear-filters-btn");
+  if (clearFiltersBtn) {
+    clearFiltersBtn.addEventListener("click", () => {
+      // Reset chips
+      document.querySelectorAll(".lp-chip").forEach((chip, i) => {
+        chip.classList.toggle("active", i === 0);
+      });
+      document.getElementById("filter-type").value = "all";
+      document.getElementById("filter-sector").value = "";
+      document.getElementById("filter-status").value = "";
+      applyFiltersAndRender();
+    });
+  }
+  // Clear Search
+  const clearSearchBtn = document.getElementById("clear-search-btn");
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener("click", () => {
+      document.getElementById("search-input").value = "";
+      applyFiltersAndRender();
+    });
+  }
+}
+
+// Remove filter-type select from applyFiltersAndRender
+function applyFiltersAndRender() {
+  // Get type from chip
+  let type =
+    document.querySelector(".lp-chip.active")?.getAttribute("data-type") ||
+    "all";
+  const sector = document.getElementById("filter-sector")?.value || "";
+  const status = document.getElementById("filter-status")?.value || "";
+  const search =
+    document.getElementById("search-input")?.value.trim().toLowerCase() || "";
+
+  // Filter ventures
+  let ventures = allVentures.filter((v) => {
+    let match = true;
+    if (sector && v.sector !== sector) match = false;
+    if (status && v.status !== status) match = false;
+    if (
+      search &&
+      !(
+        v.name.toLowerCase().includes(search) ||
+        v.sector.toLowerCase().includes(search) ||
+        v.description.toLowerCase().includes(search)
+      )
+    )
+      match = false;
+    return match;
+  });
+
+  // Filter ecosystems
+  let ecosystems = allEcosystems.filter((e) => {
+    let match = true;
+    if (sector && e.sector !== sector) match = false;
+    if (
+      search &&
+      !(
+        e.name.toLowerCase().includes(search) ||
+        e.sector.toLowerCase().includes(search) ||
+        e.description.toLowerCase().includes(search)
+      )
+    )
+      match = false;
+    return match;
+  });
+
+  // Show/hide grids based on type
+  const venturesSection =
+    document.getElementById("ventures-grid").parentElement;
+  const ecosystemSection =
+    document.getElementById("ecosystem-grid").parentElement;
+  if (type === "ventures") {
+    venturesSection.style.display = "";
+    ecosystemSection.style.display = "none";
+  } else if (type === "ecosystem") {
+    venturesSection.style.display = "none";
+    ecosystemSection.style.display = "";
+  } else {
+    venturesSection.style.display = "";
+    ecosystemSection.style.display = "";
+  }
+
+  renderVenturesGrid(ventures);
+  renderEcosystemGrid(ecosystems);
+}
+
+function renderVenturesGrid(ventures) {
+  const grid = document.getElementById("ventures-grid");
+  if (!grid) return;
+  let html = "";
+  const perRow = 3;
+  ventures.forEach((venture) => {
+    html += `
+      <div class="lp-card" style="background: #f9f9f9; border-radius: 10px; color: #222; cursor: default;">
+        <div class="lp-card-content" style="align-items: flex-start;">
+          <div style="font-size:2.5rem; margin-bottom: 0.7rem;">${
+            venture.logo
+          }</div>
+          <div class="lp-card-title" style="margin-bottom:0.5rem;">${
+            venture.name
+          }</div>
+          <div class="lp-card-desc" style="margin-bottom:0.7rem;">${
+            venture.description
+          }</div>
+          <div style="font-size:0.98rem; color:#666; margin-bottom:0.5rem;">${
+            venture.sector
+          }</div>
+          <div class="lp-card-status" style="font-size:1.1rem;">${
+            venture.status || ""
+          }</div>
+        </div>
+      </div>
+    `;
+  });
+  // Fill remaining columns with empty cards if needed
+  const remainder = ventures.length % perRow;
+  if (remainder !== 0) {
+    for (let j = remainder; j < perRow; j++) {
+      html +=
+        '<div class="lp-card lp-card-empty" style="background: #fff; border: none; box-shadow: none;"></div>';
+    }
+  }
+  grid.innerHTML = html;
+}
+
+function renderEcosystemGrid(ecosystems) {
+  const grid = document.getElementById("ecosystem-grid");
+  if (!grid) return;
+  let html = "";
+  const perRow = 3;
+  ecosystems.forEach((eco) => {
+    html += `
+      <div class="lp-card" style="background: #f9f9f9; border-radius: 10px; color: #222; cursor: default;">
+        <div class="lp-card-content" style="align-items: flex-start;">
+          <div style="font-size:2.5rem; margin-bottom: 0.7rem;">${eco.logo}</div>
+          <div class="lp-card-title" style="margin-bottom:0.5rem;">${eco.name}</div>
+          <div class="lp-card-desc" style="margin-bottom:0.7rem;">${eco.description}</div>
+          <div style="font-size:0.98rem; color:#666; margin-bottom:0.5rem;">${eco.sector}</div>
+        </div>
+      </div>
+    `;
+  });
+  // Fill remaining columns with empty cards if needed
+  const remainder = ecosystems.length % perRow;
+  if (remainder !== 0) {
+    for (let j = remainder; j < perRow; j++) {
+      html +=
+        '<div class="lp-card lp-card-empty" style="background: #f7f7f7; border: none; box-shadow: none;"></div>';
+    }
+  }
+  grid.innerHTML = html;
+}
+
+// Add a hidden select for compatibility (not visible, just for JS logic)
 document.addEventListener("DOMContentLoaded", () => {
-  renderPortfolioGrid();
-  renderLogoWall();
+  // Add hidden select for filter-type if not present
+  if (!document.getElementById("filter-type")) {
+    const hiddenType = document.createElement("select");
+    hiddenType.id = "filter-type";
+    hiddenType.style.display = "none";
+    hiddenType.innerHTML = `
+      <option value="all">All</option>
+      <option value="ventures">Ventures</option>
+      <option value="ecosystem">Ecosystem</option>
+    `;
+    document.body.appendChild(hiddenType);
+  }
+  fetchAndRenderLaunchpad();
 });
+
+// Set hero stats with real data after fetch
+async function setHeroStats() {
+  const response = await fetch("launchpad.json");
+  const data = await response.json();
+  const ventures = data.ventures || [];
+  const ecosystems = data.ecosystem_infrastructure || [];
+  const companies = ventures.length + ecosystems.length;
+  const allSectors = [
+    ...ventures.map((v) => v.sector),
+    ...ecosystems.map((e) => e.sector),
+  ];
+  const uniqueSectors = Array.from(new Set(allSectors));
+  // Pick up to 2 sector names for the summary
+  const sectorList = uniqueSectors.slice(0, 2).join(", ");
+  const summary = `${companies} companies and programs across ${
+    uniqueSectors.length
+  } sectors (e.g. ${sectorList}${
+    uniqueSectors.length > 2 ? ", and more" : ""
+  })`;
+  const summaryDiv = document.getElementById("lp-stats-summary");
+  if (summaryDiv) summaryDiv.textContent = summary;
+}
+document.addEventListener("DOMContentLoaded", setHeroStats);

@@ -21,51 +21,99 @@
       <section class="lp-hero-blur"></section>
 
       <!-- Filter/Search Bar -->
-      <section class="lp-filters">
-        <div style="position: relative">
-          <select class="lp-select" id="filter-focus">
-            <option>Select Focus Area</option>
-            <option>AI</option>
-            <option>Fintech</option>
-            <option>Health</option>
-          </select>
-          <span class="lp-select-arrow">&#9660;</span>
+      <section class="lp-filters-card lp-filters-sticky">
+        <div class="lp-filters-col">
+          <div class="lp-type-chips-row" aria-label="Type">
+            <div class="lp-type-chips" id="type-chips">
+              <button
+                class="lp-chip active"
+                data-type="all"
+                aria-label="All Types"
+              >
+                <i class="fas fa-globe"></i> All
+              </button>
+              <button
+                class="lp-chip"
+                data-type="ventures"
+                aria-label="Ventures"
+              >
+                <i class="fas fa-rocket"></i> Ventures
+              </button>
+              <button
+                class="lp-chip"
+                data-type="ecosystem"
+                aria-label="Ecosystem"
+              >
+                <i class="fas fa-network-wired"></i> Ecosystem
+              </button>
+            </div>
+          </div>
+          <div class="lp-filters-row">
+            <div class="lp-filter-group">
+              <label
+                for="filter-sector"
+                class="lp-filter-label lp-filter-label-small"
+                ><i class="fas fa-tags"></i> Sector</label
+              >
+              <div class="lp-select-wrapper">
+                <select class="lp-select" id="filter-sector">
+                  <option value="">All Sectors</option>
+                  <!-- Populated by JS -->
+                </select>
+                <span class="lp-select-arrow">&#9660;</span>
+              </div>
+            </div>
+            <div class="lp-filter-group">
+              <label
+                for="filter-status"
+                class="lp-filter-label lp-filter-label-small"
+                ><i class="fas fa-info-circle"></i> Status</label
+              >
+              <div class="lp-select-wrapper">
+                <select class="lp-select" id="filter-status">
+                  <option value="">All Statuses</option>
+                  <!-- Populated by JS -->
+                </select>
+                <span class="lp-select-arrow">&#9660;</span>
+              </div>
+            </div>
+            <div class="lp-filter-group lp-filter-group-search">
+              <label
+                for="search-input"
+                class="lp-filter-label lp-filter-label-small"
+                ><i class="fas fa-search"></i> Search</label
+              >
+              <div class="lp-search-wrapper">
+                <div class="lp-search">
+                  <span class="lp-search-icon">&#128269;</span>
+                  <input
+                    type="text"
+                    id="search-input"
+                    placeholder="Search by name, sector, or description"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div style="position: relative">
-          <select class="lp-select" id="filter-stage">
-            <option>Select Stage</option>
-            <option>Idea</option>
-            <option>MVP</option>
-            <option>Growth</option>
-          </select>
-          <span class="lp-select-arrow">&#9660;</span>
-        </div>
-        <div style="position: relative">
-          <select class="lp-select" id="filter-status">
-            <option>Select Status</option>
-            <option>All</option>
-            <option>Active</option>
-            <option>Launched</option>
-            <option>In Progress</option>
-            <option>Coming Soon</option>
-          </select>
-          <span class="lp-select-arrow">&#9660;</span>
-        </div>
-        <div class="lp-search">
-          <span class="lp-search-icon">&#128269;</span>
-          <input type="text" id="search-input" placeholder="Search" />
-        </div>
-        <button class="lp-btn" id="jobs-board-btn">SEARCH</button>
+      </section>
+
+      <!-- Ventures Grid Section -->
+      <section class="lp-section">
+        <h2 class="lp-section-title">Ventures</h2>
+        <div id="ventures-grid" class="lp-grid"></div>
+      </section>
+
+      <!-- Ecosystem Infrastructure Grid Section -->
+      <section class="lp-section">
+        <h2 class="lp-section-title">Ecosystem Infrastructure</h2>
+        <div id="ecosystem-grid" class="lp-grid"></div>
       </section>
 
       <!-- Portfolio Grid Section -->
-      <section class="lp-section">
-        <h2 class="lp-section-title">Our Launches</h2>
-        <div id="lp-grid" class="lp-grid"></div>
-      </section>
 
       <!-- Portfolio Outcomes Section (New) -->
-      <section class="lp-section">
+      <!-- <section class="lp-section">
         <h2 class="lp-section-title">Portfolio Outcomes</h2>
         <div class="lp-outcomes-grid">
           <div class="lp-outcome-card">
@@ -87,22 +135,9 @@
             <div class="lp-outcome-status">CLIENT</div>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <!-- Hero Stats Section (moved here) -->
-      <section class="lp-hero-stats">
-        <div class="lp-hero-stats-content">
-          <div class="lp-hero-stats-headline">
-            <span class="lp-hero-stats-bold">784 companies. 3,845 jobs.</span
-            ><br />
-            It's time to build.
-          </div>
-          <div class="lp-hero-stats-subtext">
-            Looking for your next startup adventure?
-          </div>
-          <button class="lp-hero-stats-btn">START YOUR SEARCH</button>
-        </div>
-      </section>
 
       <!-- Logo Wall Section -->
       <!-- <section class="lp-section">

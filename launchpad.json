@@ -1,0 +1,94 @@
+{
+  "ventures": [
+    {
+      "logo": "🧠",
+      "name": "Podium Africa",
+      "sector": "Growth/Talent Marketplace",
+      "description": "Expert-led platform matching business growth problems with vetted professionals for equity or revenue share.",
+      "status": "🚀"
+    },
+    {
+      "logo": "🌾",
+      "name": "AgriLearn",
+      "sector": "AgTech / EdTech",
+      "description": "Farmer knowledge OS for verified training, certification, and extension services.",
+      "status": "🚀"
+    },
+    {
+      "logo": "💧",
+      "name": "Amandla",
+      "sector": "Digital Health / Wellness",
+      "description": "Health data wallet + wellness service gateway. Pivoting into climate-health-fintech rails.",
+      "status": "🚀"
+    },
+    {
+      "logo": "🔥",
+      "name": "Baridi Stack",
+      "sector": "Cold Chain / Climate Resilience",
+      "description": "Modular cold storage + vendor network + climate-smart value chain tech.",
+      "status": "🚀"
+    },
+    {
+      "logo": "🍽️",
+      "name": "13Plates / Miz'en Plus",
+      "sector": "F&B Innovation",
+      "description": "East Africa's culinary innovation district, incubating F&B brands, events, and tech products like Slic'd.",
+      "status": "🚀"
+    },
+    {
+      "logo": "🧴",
+      "name": "Nilora",
+      "sector": "Beauty & Wellness",
+      "description": "Premium shea butter brand with family-focused, Afro-luxury positioning.",
+      "status": "🚀"
+    },
+    {
+      "logo": "🎓",
+      "name": "Silverpreneur Program",
+      "sector": "Legacy Business Transformation",
+      "description": "Transforming 50+ year-old founders' businesses through leadership transition, training, and systems.",
+      "status": "🚀"
+    },
+    {
+      "logo": "🏢",
+      "name": "StrikeForce Labs",
+      "sector": "Corporate Innovation",
+      "description": "Embedded expert teams deployed into companies to implement strategic transformation.",
+      "status": "🚀"
+    },
+    {
+      "logo": "🛠",
+      "name": "Without A Doubt™",
+      "sector": "Consulting / SaaS",
+      "description": "4-step business growth system designed for SMEs scaling past UGX 1Bn.",
+      "status": "🚀"
+    },
+    {
+      "logo": "🎪",
+      "name": "/ Pavilion",
+      "sector": "Event Commerce / InfraTech",
+      "description": "Tech infrastructure for events and exhibitions—floor planning, payment, vendor onboarding.",
+      "status": "🚀"
+    }
+  ],
+  "ecosystem_infrastructure": [
+    {
+      "logo": "🏛",
+      "name": "Highland Innovation Hub",
+      "sector": "Ecosystem Development",
+      "description": "Regional hub for agri-tech and climate-smart ventures in Southwestern Uganda."
+    },
+    {
+      "logo": "🌐",
+      "name": "National Innovation Commercialization Program",
+      "sector": "Innovation Policy",
+      "description": "Multi-stakeholder framework to transition university innovations to market."
+    },
+    {
+      "logo": "🔗",
+      "name": "Zida Franchise Accelerator",
+      "sector": "Business Model Innovation",
+      "description": "Accelerator helping African businesses become franchise-ready."
+    }
+  ]
+}
