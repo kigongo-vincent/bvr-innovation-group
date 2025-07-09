@@ -42,13 +42,15 @@
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
 }
 .accelerator-logo {
-  max-width: 80px;
   max-height: 80px;
+  height: 80px;
   margin-bottom: 1.5rem;
   align-self: flex-start;
   mix-blend-mode: multiply;
   filter: brightness(1.1);
 }
+
+
 .accelerator-card h2 {
   font-size: 1.3rem;
   font-weight: 700;
