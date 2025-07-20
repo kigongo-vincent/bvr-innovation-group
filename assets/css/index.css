@@ -128,7 +128,7 @@
 .intro-illustration img {
   width: 100%;
   height: auto;
-  animation: float 6s ease-in-out infinite;
+  /* animation: float 6s ease-in-out infinite; */
 }
 
 .intro-text {
@@ -356,7 +356,7 @@
   width: 100%;
   height: auto;
   transform-origin: center;
-  animation: floatShape 8s ease-in-out infinite;
+  /* animation: floatShape 8s ease-in-out infinite; */
 }
 
 .philosophy-text {
